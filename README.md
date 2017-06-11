@@ -31,5 +31,5 @@
     </template>
 
 
-  [1]: https://s.gravatar.com/avatar/2e02769272d50ee4330ba924f05fb025?size=496&default=retro
+  [1]: https://github.com/jaweii/vueg/blob/master/image/GIF.gif
 
