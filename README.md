@@ -1,3 +1,6 @@
+![LOGO][2]
+
+
 ## vueg ##
 
 为vue-router添加转场效果，只需要在`<router-view v-transition></router-view>`加上`v-transition`，即可获得转场效果，并能够根据url级别(/)和历史记录判断是前进和后退。
@@ -38,4 +41,5 @@ just need to add `v-transition` in the `<router-view v-transition></router-view>
 
 
   [1]: https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif
+  [2]: https://raw.githubusercontent.com/jaweii/vueg/master/image/vueg.JPG
 
