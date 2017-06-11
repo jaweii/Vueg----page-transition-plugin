@@ -4,7 +4,7 @@
 }
 
 .vue-transition-in {
-    animation: vueTransitionIn .3s;
+    animation: vueTransitionIn;
 }
 
 @keyframes vueTransitionIn {

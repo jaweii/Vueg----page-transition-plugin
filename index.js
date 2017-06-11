@@ -1,15 +1,24 @@
 let transition = {};
 transition.install = (Vue, options) => {
     let route, lastPath, transitionType
-
+    let op = { duration: '0.3s' } //默认配置
+    Object.keys(options).forEach(key => {
+        op[key] = options[key]
+    })
     Vue.directive('transition', {
         inserted(el, binding, vnode, oldVnode) {
+            if (binding.value === false)
+                return
             if (!route)
                 return console.error('没有使用vue-router')
+
             el.parentElement.style.overflow = 'hidden'
-            if (!transitionType)
+            if (!transitionType) {
                 return el.classList.add('vue-transition-first')
-            if (transitionType == 'forward') {
+            }
+            
+            el.style.animationDuration = op.duration + 's'
+            if (transitionType === 'forward') {
                 el.classList.add('vue-transition-in')
             } else {
                 el.classList.add('vue-transition-out')
@@ -41,4 +50,4 @@ transition.install = (Vue, options) => {
         }
     })
 }
-module.exports = transition;
+export default transition
