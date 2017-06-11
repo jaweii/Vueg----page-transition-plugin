@@ -23,7 +23,7 @@
      import router from './router'
      //  ↓↓↓↓↓↓↓↓↓↓↓↓
      import vueg from 'vueg' 	
-     import './vueTransition.css'
+     import 'vueg/vueTransition.css'
      Vue.use(vueg)
 
 2、在需要添加转场效果的`<router-view>`上添加v-transition即可，如：
