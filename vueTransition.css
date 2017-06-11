@@ -1,0 +1,42 @@
+.vue-transition {
+    position: absolute;
+    background-color: red;
+}
+
+.vue-transition-in {
+    animation: vueTransitionIn .3s;
+}
+
+@keyframes vueTransitionIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.vue-transition-out {
+    animation: vueTransitionOut .3s;
+}
+
+@keyframes vueTransitionOut {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(-0);
+    }
+}
+.vue-transition-first {
+    animation: vueTransitionFirst .6s;
+}
+
+@keyframes vueTransitionFirst {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
