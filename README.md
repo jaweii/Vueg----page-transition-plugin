@@ -31,5 +31,5 @@
     </template>
 
 
-  [1]: https://github.com/jaweii/vueg/blob/master/image/GIF.gif
+  [1]: https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif
 
