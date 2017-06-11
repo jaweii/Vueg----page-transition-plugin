@@ -1,22 +1,24 @@
 ## vueg ##
+
 为vue-router添加转场效果，只需要在`<router-view v-transition></router-view>`加上`v-transition`，即可获得转场效果，并能够根据url级别(/)和历史记录判断是前进和后退。
 
+just need to add v-transition in the `<router-view v-transition></router-view>`,vue-router will have a transition effect.
 
 ----------
 
 
-**效果图**：
+**效果图 / Demo**：
 
 ![演示动态图][1]
 
 ----------
-**使用方法**
+**使用方法 / Usage**
 
-0、安装
+0、安装 / Installation
 
      npm i vueg -G
 
-1、引入组件
+1、引入插件 / Get Started
 
      import Vue from 'vue' 
      import App from './App' 
