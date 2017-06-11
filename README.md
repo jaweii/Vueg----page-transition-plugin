@@ -14,7 +14,7 @@
 
 0、安装
 
-     npm i vueg --G
+     npm i vueg -G
 
 1、引入组件
 
