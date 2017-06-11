@@ -1,5 +1,5 @@
 let transition = {};
-transition.install = (Vue, options) => {
+transition.install = (Vue, options = {}) => {
     let route, lastPath, transitionType
     let op = { duration: '0.3s' } //默认配置
     Object.keys(options).forEach(key => {
@@ -16,7 +16,7 @@ transition.install = (Vue, options) => {
             if (!transitionType) {
                 return el.classList.add('vue-transition-first')
             }
-            
+
             el.style.animationDuration = op.duration + 's'
             if (transitionType === 'forward') {
                 el.classList.add('vue-transition-in')
