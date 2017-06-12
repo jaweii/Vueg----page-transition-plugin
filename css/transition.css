@@ -1,7 +1,4 @@
-.vue-transition {
-    position: absolute;
-    background-color: red;
-}
+.vue-transition {}
 
 .vue-transition-in {
     animation: vueTransitionIn;
@@ -28,8 +25,9 @@
         transform: translateX(-0);
     }
 }
+
 .vue-transition-first {
-    animation: vueTransitionFirst .6s;
+    animation: vueTransitionFirst 0s;
 }
 
 @keyframes vueTransitionFirst {
@@ -38,5 +36,19 @@
     }
     to {
         opacity: 1;
+    }
+}
+
+/*兼容ios*/
+a,button,ul {
+    -webkit-animation: hue 60s infinite linear;
+}
+
+@-webkit-keyframes hue {
+    from {
+        -webkit-filter: hue-rotate(-1deg);
+    }
+    to {
+        -webkit-filter: hue-rotate(0deg);
     }
 }
