@@ -59,7 +59,7 @@ just need to add `v-transition` in the `<router-view v-transition></router-view>
         }  
         Vue.use(vueg, router,options)
 
-`forwardAnim` 、 `backAnim` 提供一下值：  
+`forwardAnim` 、 `backAnim` 提供以下值：  
 bounce  
 flash  
 pulse  
