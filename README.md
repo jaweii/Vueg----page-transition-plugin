@@ -50,7 +50,7 @@ just need to add `v-transition` in the `<router-view v-transition></router-view>
             backAnim:'fadeInLeft'//后退动画，默认fadeInLeft
         }
         Vue.use(vueg, router,options)
-`forwardAnim` 、 `backAnim` 提供一下值：  s
+`forwardAnim` 、 `backAnim` 提供一下值：  
 bounce  
 flash  
 pulse  
