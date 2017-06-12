@@ -50,21 +50,21 @@ just need to add `v-transition` in the `<router-view v-transition></router-view>
             backAnim:'fadeInLeft'//后退动画，默认fadeInLeft
         }
         Vue.use(vueg, router,options)
-`forwardAnim` 、 `backAnim` 提供一下值：
-bounce
-flash
-pulse
-rubberBand
-shake
-headShake
-swing
-.....省略几十个...
-slideInDown
-slideInLeft
-slideOutDown
-slideOutLeft
-slideOutRight
-slideOutUp
+`forwardAnim` 、 `backAnim` 提供一下值：  s
+bounce  
+flash  
+pulse  
+rubberBand  
+shake  
+headShake  
+swing  
+.....省略几十个...  
+slideInDown  
+slideInLeft  
+slideOutDown  
+slideOutLeft  
+slideOutRight  
+slideOutUp  
 预览效果，以及查看全部可用值，请访问：https://daneden.github.io/animate.css/
 
   [1]: https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif
