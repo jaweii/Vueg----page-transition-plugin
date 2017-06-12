@@ -49,7 +49,7 @@ just need to add `v-transition` in the `<router-view v-transition></router-view>
             firstEntryDuration: '.6', //首次进入渐进动画时长  
             forwardAnim: 'fadeInRight', //前进动画  
             backAnim: 'fadeInLeft', //后退动画  
-            sameDepthdisable: false, //url级别相同时禁用动画  
+            sameDepthDisable: false, //url级别相同时禁用动画  
             tabs: [{
                     name:'home'
                 },{
