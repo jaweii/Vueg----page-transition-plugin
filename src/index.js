@@ -1,19 +1,24 @@
-let transition = {};
+let transition = {}
 transition.install = (Vue, router, options = {}) => {
-    let route, lastPath, transitionType, binding = {}
+    let route, lastPath, transitionType, binding = {},
+        op
 
-    //默认配置
-    let op = {
-        duration: '0.3', //动画时长
-        firstEntryDisable: false, //值为true时禁用首次进入的渐进动画
-        firstEntryDuration: '.6', //首次进入渐进动画时长
-        forwardAnim: 'fadeInRight', //前进动画
-        backAnim: 'fadeInLeft', //后退动画
-        sameDepthdisable: false, //url级别相同时禁用动画
-        tabs: [], //name填写对应路由的name,以实现类似app中点击tab页面水平转场效果，如tab[1]到tab[0]，会使用forwardAnim动画，tab[1]到tab[2]，会使用backAnim动画
-        tabsDisable: false, //值为true时，tabs间的转场没有动画
-        disable: false, //禁用转场动画
+    function _initOptions() {
+        //默认配置
+        op = {
+            duration: '0.3', //动画时长
+            firstEntryDisable: false, //值为true时禁用首次进入的渐进动画
+            firstEntryDuration: '.6', //首次进入渐进动画时长
+            forwardAnim: 'fadeInRight', //前进动画
+            backAnim: 'fadeInLeft', //后退动画
+            sameDepthdisable: false, //url级别相同时禁用动画
+            tabs: [], //name填写对应路由的name,以实现类似app中点击tab页面水平转场效果，如tab[1]到tab[0]，会使用forwardAnim动画，tab[1]到tab[2]，会使用backAnim动画
+            tabsDisable: false, //值为true时，tabs间的转场没有动画
+            disable: false, //禁用转场动画
+            vueEl: 'app' //new Vue({el: '#app'),vue所挂在元素的ID，默认为app，此配置用于保持转场时的“底色”
+        }
     }
+    _initOptions()
 
     Vue.directive('transition', {
         bind(el, _binding, vnode, oldVnode) {
@@ -21,13 +26,32 @@ transition.install = (Vue, router, options = {}) => {
         }
     })
 
+    //旧组件退出后会被销毁，所以建个容器，再销毁后重新挂在上去，作为“底色”
+    function setBackground() {
+
+        let bacgrEle = document.createElement('div')
+        bacgrEle.id = 'vug-background'
+            //每次重新挂载vue都会情况被挂载元素，所有每次都要再添加进去
+        if (!document.getElementById('vug-background'))
+            document.getElementById(op.vueEl).appendChild(bacgrEle)
+        let vugBac = document.getElementById('vug-background')
+        // console.log(document.documentElement.clientHeight)
+        // vugBac.style.maxHeight = document.documentElement.clientHeight + 'px'
+        vugBac.innerHTML = ''
+        vugBac.classList = []
+        vugBac.appendChild(this.$el)
+    }
+
     Vue.mixin({
         beforeCreate() {
             route = this.$route
         },
         mounted: addEffect,
-        activated: addEffect
+        activated: addEffect,
+        destroyed: setBackground,
+        deactivated: setBackground
     })
+
     router.beforeEach((to, from, next) => {
         let toDepth = to.path.split('/').length
         let fromDepth = from.path.split('/').length
@@ -99,6 +123,9 @@ transition.install = (Vue, router, options = {}) => {
         if (!el.parentElement)
             return
 
+        //防止某组件的配置影响其他组件，每次都初始化一下数据
+        _initOptions()
+
         //全局vueg配置
         Object.keys(options).forEach(key => {
             op[key] = options[key]
@@ -111,8 +138,6 @@ transition.install = (Vue, router, options = {}) => {
                 op[key] = vugConfig[key]
             })
         }
-
-        el.parentElement.style.overflow = 'hidden'
 
         //设置首次进入的渐进显示时长
         if (transitionType === 'first') {

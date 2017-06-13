@@ -3,14 +3,14 @@
 
 ## VUEG ##
 
-为vue-router添加转场效果，只需要在`<router-view v-transition></router-view>`加上`v-transition`，即可获得转场效果，并能够根据url级别(/)和历史记录判断是前进和后退。
+为vue-router添加转场效果，只需要`Vue.use(vueg)`，即可获得转场效果，并能够根据url级别(/)和历史记录判断是前进和后退。
 
-just need to add `v-transition` in the `<router-view v-transition></router-view>`,vue-router will have a transition effect.
+just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 
 ----------
 
 
-## 效果图 / Demo ##：
+## 效果图 / Demo ：##
 
 ![演示动态图][1]
 
@@ -32,11 +32,11 @@ just need to add `v-transition` in the `<router-view v-transition></router-view>
      Vue.use(vueg, router)
 
 
-2、在需要添加转场效果的`<router-view>`上添加v-transition即可，如：
+2、`<router-view>`上添加v-transition="false"，可以禁用动画，如：  
 
     <template>
         <div id="app">
-            <router-view v-transition></router-view>
+            <router-view v-transition="false"></router-view>
         </div>
     </template>
     
@@ -54,7 +54,7 @@ just need to add `v-transition` in the `<router-view v-transition></router-view>
                     name:'home'
                 },{
                     name:'my'
-                }], //默认为[]，name对应路由的name,以实现类似app中点击tab页面水平转场效果，如tab[1]到tab[0]  ，会使用backAnim动画，tab[1]到tab[2]，会使用forwardAnim动画  
+                }], //默认为[]，name对应路由的name,以实现类似app中点击tab页面水平转场效果，如tab[1]到tab[0]，会使用backAnim动画，tab[1]到tab[2]，会使用forwardAnim动画  
             tabsDisable: false, //值为true时，tabs间的转场没有动画，默认为false  
             disable: false, //禁用转场动画，默认为false    
         }  

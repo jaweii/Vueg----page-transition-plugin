@@ -4,14 +4,25 @@
 		<br>
 		<br>
 		<br>
-		<a @click="$router.back()">返回</a>
+		<div @click="$router.back()">返回</div>
 	</section>
 </template>
-
+<script>
+	export default{
+		name:'page1',
+		data(){
+			return {
+				vugConfig:{
+					forwardAnim:'zoomInUp'
+				}
+			}
+		}
+	}
+</script>
 <style scoped>
 	section{
 		text-align: center;
-		background-color: pink;	
+		background-color: #d1c4e9;	
 		height: 800px;
 	}
 	h1{

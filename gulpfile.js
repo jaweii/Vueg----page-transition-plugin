@@ -31,5 +31,6 @@ gulp.task('clean', function(fn) {
 gulp.task('default', ['css', 'js'])
 
 gulp.task('watch', function() {
-    gulp.watch(['./src/*.js', './css/*.css'], ['default'])
+    gulp.watch(['./src/*.js'], ['js'])
+    gulp.watch(['./css/*.css'], ['css'])
 })

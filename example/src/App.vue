@@ -1,6 +1,8 @@
 <template>
     <div id="app">
-        <router-view v-transition="true"></router-view>
+        <!-- <keep-alive> -->
+            <router-view v-transition="true"></router-view>
+        <!-- </keep-alive> -->
     </div>
 </template>
 <script>
@@ -14,13 +16,17 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #4c2c2d;
 }
-body{
-  margin:0;
+
+body {
+    margin: 0;
 }
+
 a {
     cursor: pointer;
     text-decoration: underline;
 }
+
+
 </style>

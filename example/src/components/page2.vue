@@ -1,17 +1,17 @@
 <template>
     <section>
         <img src="../assets/logo.png">
-        <h1>页面2</h1>
+        <h1>页面</h1>
         <br>
         <router-view v-transition></router-view>
         <br>
-        <a @click="$router.back()">返回</a>
+        <div @click="$router.back()">返回</div>
     </section>
 </template>
 <style scoped>
 section {
     text-align: center;
-    background-color: pink;
+    background-color: #b2ebf2;
     height: 800px;
 }
 

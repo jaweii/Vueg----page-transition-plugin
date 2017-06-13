@@ -1,46 +1,17 @@
-.vue-transition {}
-
-.vue-transition-in {
-    animation: vueTransitionIn;
-}
-
-@keyframes vueTransitionIn {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-.vue-transition-out {
-    animation: vueTransitionOut .3s;
-}
-
-@keyframes vueTransitionOut {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(-0);
-    }
-}
-
-.vue-transition-first {
-    animation: vueTransitionFirst 0s;
-}
-
-@keyframes vueTransitionFirst {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+#vug-background {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    background: #f8f8f8;
 }
 
 /*兼容ios*/
-a,button,ul {
+
+a,
+button,
+ul {
     -webkit-animation: hue 60s infinite linear;
 }
 

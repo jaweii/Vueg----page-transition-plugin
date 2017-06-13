@@ -3,16 +3,35 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Vuex from 'vuex'
 import vueg from 'vueg'
-import 'vueg/css/transition.css'
+import 'vueg/css/transition-min.css'
 
 Vue.config.productionTip = false
 
-Vue.use(vueg, { duration: .3 })
+Vue.use(Vuex)
+Vue.use(vueg, router, {
+    forwardAnim: 'fadeInRight'
+})
 
+const store = new Vuex.Store({
+    state: {
+        page3: {
+            forwardAnim: 'fadeInRight',
+            duration: '0.3',
+            backAnim:'fadeInLeft'
+        }
+    },
+    mutations: {
+        setState(state, val) {
+            state[val.key] = val.value
+        }
+    }
+})
 new Vue({
     el: '#app',
     router,
+    store,
     template: '<App/>',
     components: { App }
 })
