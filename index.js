@@ -152,10 +152,11 @@ transition.install = (Vue, router, options = {}) => {
         })
 
         //组件vueg配置
-        let vugConfig = this.$data.vugConfig
-        if (vugConfig) {
-            Object.keys(vugConfig).forEach(key => {
-                op[key] = vugConfig[key]
+        let vuegConfig = this.$data.vuegConfig
+
+        if (vuegConfig) {
+            Object.keys(vuegConfig).forEach(key => {
+                op[key] = vuegConfig[key]
             })
         }
 

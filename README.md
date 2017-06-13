@@ -87,7 +87,7 @@ options还可以在每个组件的data中配置，举例：
 
         data(){
             return {
-                vugConfig:{  
+                vuegConfig:{  
                     forwardAnim:'bounceInUp',//options所有配置可以写在这个对象里，会覆盖全局的配置
                 }
         }
