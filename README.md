@@ -10,7 +10,7 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 ----------
 
 
-## 效果图 / Demo ：##
+## 效果图 / Demo ： ##
 
 ![演示动态图][1]
 
@@ -33,7 +33,7 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
      //  ↓↓↓↓↓↓↓↓↓↓↓↓
      import vueg from 'vueg'    
      import 'vueg/css/transition-min.css'
-     Vue.use(vueg, router)
+     Vue.use(vueg, router)//←注意这一句应该在router实例化(router = new VueRouter({})之后
 
 
 2、`<router-view>`上添加v-transition="false"，可以禁用动画，如：  
