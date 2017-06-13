@@ -1,23 +1,8 @@
 let transition = {}
 transition.install = (Vue, router, options = {}) => {
     let route, lastPath, transitionType, binding = {},
-        op
+        op, instances //组件激活时判断是否属于route中，不属于无动画
 
-    function _initOptions() {
-        //默认配置
-        op = {
-            duration: '0.3', //动画时长
-            firstEntryDisable: false, //值为true时禁用首次进入的渐进动画
-            firstEntryDuration: '.6', //首次进入渐进动画时长
-            forwardAnim: 'fadeInRight', //前进动画
-            backAnim: 'fadeInLeft', //后退动画
-            sameDepthdisable: false, //url级别相同时禁用动画
-            tabs: [], //name填写对应路由的name,以实现类似app中点击tab页面水平转场效果，如tab[1]到tab[0]，会使用forwardAnim动画，tab[1]到tab[2]，会使用backAnim动画
-            tabsDisable: false, //值为true时，tabs间的转场没有动画
-            disable: false, //禁用转场动画
-            vueEl: 'app' //new Vue({el: '#app'),vue所挂在元素的ID，默认为app，此配置用于保持转场时的“底色”
-        }
-    }
     _initOptions()
 
     Vue.directive('transition', {
@@ -26,8 +11,25 @@ transition.install = (Vue, router, options = {}) => {
         }
     })
 
+
     //旧组件退出后会被销毁，所以建个容器，再销毁后重新挂在上去，作为“底色”
     function setBackground() {
+        //不属于当前进场路由匹配到的组件，则不处理
+        let obj = this.$el.classList
+        if (!obj)
+            return
+        let arr = []
+        Object.keys(obj).forEach(item => {
+            arr.push(obj[item])
+        })
+        let isInArr = false
+        arr.map(item => {
+                if (item === 'animated')
+                    isInArr = true
+            })
+            //我想屎。。。
+        if (!isInArr)
+            return
 
         let bacgrEle = document.createElement('div')
         bacgrEle.id = 'vug-background'
@@ -35,24 +37,21 @@ transition.install = (Vue, router, options = {}) => {
         if (!document.getElementById('vug-background'))
             document.getElementById(op.vueEl).appendChild(bacgrEle)
         let vugBac = document.getElementById('vug-background')
-        // console.log(document.documentElement.clientHeight)
-        // vugBac.style.maxHeight = document.documentElement.clientHeight + 'px'
+            // console.log(document.documentElement.clientHeight)
+            // vugBac.style.maxHeight = document.documentElement.clientHeight + 'px'
         vugBac.innerHTML = ''
         vugBac.classList = []
         vugBac.appendChild(this.$el)
     }
-
     Vue.mixin({
-        beforeCreate() {
-            route = this.$route
-        },
         mounted: addEffect,
         activated: addEffect,
-        destroyed: setBackground,
+        beforeDestroy: setBackground,
         deactivated: setBackground
     })
 
-    router.beforeEach((to, from, next) => {
+    router.afterEach((to, from) => {
+        route = to
         let toDepth = to.path.split('/').length
         let fromDepth = from.path.split('/').length
         if (to.path.charAt(to.path.length - 1) !== '/')
@@ -109,17 +108,38 @@ transition.install = (Vue, router, options = {}) => {
         if (op.disable)
             transition = ''
 
-        next()
+        //获取进场的组件instances，{default:component}
+        let matched = to.matched[0]
+        if (matched && matched.instances) {
+            instances = matched.instances
+            addEffect(instances)
+        } else
+            instances = null
     })
 
-    function addEffect(vm = this) {
-        if (!vm)
+    function isInRoute() {
+        // console.log(instances,
+        //     instances.default._uid, 
+        //     this, this._uid)
+        if (instances && instances.default && instances.default._uid !== this._uid)
+            return false
+        else return true
+    }
+
+    function addEffect(ins = this) {
+        //不属于当前进场路由匹配到的组件，则无动画
+        if (!isInRoute.call(this))
             return
-        let el = vm.$el
+
+        if (!ins) //无参
+            return
         if (binding.value === false)
             return
         if (!route)
-            return console.error('没有使用vue-router')
+            return
+        let el = this.$el
+        if (!el) //容错
+            return
         if (!el.parentElement)
             return
 
@@ -132,7 +152,7 @@ transition.install = (Vue, router, options = {}) => {
         })
 
         //组件vueg配置
-        let vugConfig = vm.$data.vugConfig
+        let vugConfig = this.$data.vugConfig
         if (vugConfig) {
             Object.keys(vugConfig).forEach(key => {
                 op[key] = vugConfig[key]
@@ -171,5 +191,21 @@ transition.install = (Vue, router, options = {}) => {
         }, op.firstEntryDuration * 1000);
     }
 
+    function _initOptions() {
+        //默认配置
+        op = {
+            duration: '0.3', //动画时长
+            firstEntryDisable: false, //值为true时禁用首次进入的渐进动画
+            firstEntryDuration: '.6', //首次进入渐进动画时长
+            forwardAnim: 'fadeInRight', //前进动画
+            backAnim: 'fadeInLeft', //后退动画
+            sameDepthdisable: false, //url级别相同时禁用动画
+            tabs: [], //name填写对应路由的name,以实现类似app中点击tab页面水平转场效果，如tab[1]到tab[0]，会使用forwardAnim动画，tab[1]到tab[2]，会使用backAnim动画
+            tabsDisable: false, //值为true时，tabs间的转场没有动画
+            disable: false, //禁用转场动画
+            vueEl: 'app' //new Vue({el: '#app'),vue所挂在元素的ID，默认为app，此配置用于保持转场时的“底色”
+        }
+    }
+
 }
-export default transition
+module.exports = transition

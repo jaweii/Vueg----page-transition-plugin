@@ -1,31 +1,88 @@
 {
-  "name": "vueg",
-  "version": "1.1.56",
-  "description": "为vue-router添加转场效果，只需要在<router-view v-transition></router-view>加上v-transition，即可获得转场效果，并能够根据url级别(/)和历史记录判断是前进和后退。",
-  "main": "index.js",
+  "_args": [
+    [
+      "vueg",
+      ""
+    ]
+  ],
+  "_from": "vueg@latest",
+  "_id": "vueg@1.1.6",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/vueg",
+  "_nodeVersion": "6.2.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/vueg-1.1.6.tgz_1497337804288_0.18585949740372598"
+  },
+  "_npmUser": {
+    "email": "10005945485@qq.com",
+    "name": "jawei"
+  },
+  "_npmVersion": "3.8.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "vueg",
+    "raw": "vueg",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/vueg/-/vueg-1.1.6.tgz",
+  "_shasum": "8041cf235ac6f07b66c5a37bc372012708a4696e",
+  "_shrinkwrap": null,
+  "_spec": "vueg",
+  "_where": "",
+  "author": {
+    "name": "jawei"
+  },
   "dependencies": {
     "vuet": "^0.0.6"
   },
+  "description": "为vue-router添加转场效果，只需要在<router-view v-transition></router-view>加上v-transition，即可获得转场效果，并能够根据url级别(/)和历史记录判断是前进和后退。",
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "css-loader": "^0.28.4",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.4.1",
+    "gulp-concat": "^2.6.1",
     "gulp-concat-css": "^2.3.0",
+    "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
     "postcss-loader": "^2.0.5",
     "pump": "^1.0.2",
     "style-loader": "^0.18.2",
     "webpack": "^2.6.1"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "directories": {},
+  "dist": {
+    "shasum": "8041cf235ac6f07b66c5a37bc372012708a4696e",
+    "tarball": "https://registry.npmjs.org/vueg/-/vueg-1.1.6.tgz"
   },
+  "gitHead": "0eae7a5f9528ef69e942d5e7a409ab2364d9af13",
   "keywords": [
     "vue",
     "transition"
   ],
-  "author": "jawei",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "10005945485@qq.com",
+      "name": "jawei"
+    }
+  ],
+  "name": "vueg",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.1.6"
 }
