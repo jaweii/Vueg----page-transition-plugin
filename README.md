@@ -14,6 +14,10 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 
 ![演示动态图][1]
 
+项目实战效果：
+
+![演示动态图][3]
+
 ----------
 ## 使用方法 / Usage ##
 
@@ -44,6 +48,7 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 ----------
 ## 配置项 ##
         const options={  
+            vueEl: 'app', //new Vue({el: '#app'),vue所挂载元素的ID，默认为app，此配置用于保持转场时的“底色”
             duration: '0.3', //转场动画时长，默认为0.3  
             firstEntryDisable: false, //值为true时禁用首次进入的渐进动画，默认为false  
             firstEntryDuration: '.6', //首次进入渐进动画时长，默认为.6  
@@ -91,4 +96,5 @@ options还可以在每个组件的data中配置，举例：
 
   [1]: https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif
   [2]: https://raw.githubusercontent.com/jaweii/vueg/master/image/vueg.JPG
+  [3]: https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF33.gif
 

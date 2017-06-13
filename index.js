@@ -194,6 +194,7 @@ transition.install = (Vue, router, options = {}) => {
     function _initOptions() {
         //默认配置
         op = {
+            vueEl: 'app', //new Vue({el: '#app'),vue所挂载元素的ID，默认为app，此配置用于保持转场时的“底色”
             duration: '0.3', //动画时长
             firstEntryDisable: false, //值为true时禁用首次进入的渐进动画
             firstEntryDuration: '.6', //首次进入渐进动画时长
@@ -202,8 +203,7 @@ transition.install = (Vue, router, options = {}) => {
             sameDepthdisable: false, //url级别相同时禁用动画
             tabs: [], //name填写对应路由的name,以实现类似app中点击tab页面水平转场效果，如tab[1]到tab[0]，会使用forwardAnim动画，tab[1]到tab[2]，会使用backAnim动画
             tabsDisable: false, //值为true时，tabs间的转场没有动画
-            disable: false, //禁用转场动画
-            vueEl: 'app' //new Vue({el: '#app'),vue所挂在元素的ID，默认为app，此配置用于保持转场时的“底色”
+            disable: false //禁用转场动画
         }
     }
 
