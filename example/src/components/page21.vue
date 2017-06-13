@@ -4,6 +4,17 @@
         <a @click="$router.back()">转到页面2-0</a>
     </div>
 </template>
+<script>
+export default {
+    data() {
+        return {
+            vuegConfig: {
+                disable: false
+            }
+        }
+    }
+}
+</script>
 <style scoped>
 div {
     text-align: center;

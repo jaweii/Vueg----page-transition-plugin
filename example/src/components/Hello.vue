@@ -15,7 +15,8 @@ export default {
     name: 'hello',
     data() {
         return {
-            vugConfig: {
+            vuegConfig
+: {
                 forwardAnim: this.$store.state.page3.forwardAnim,
                 backAnim: this.$store.state.page3.backAnim,
                 duration: this.$store.state.page3.duration

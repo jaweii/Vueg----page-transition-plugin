@@ -14,7 +14,8 @@ export default {
     name: 'page1',
     data() {
         return {
-            vugConfig: {
+            vuegConfig
+: {
                 forwardAnim: 'bounceInRight',
                 duration: '.5'
             }

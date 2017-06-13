@@ -1,7 +1,7 @@
 <template>
     <section>
         <img src="../assets/logo.png">
-        <h1>页面</h1>
+        <h1>嵌入路由转场</h1>
         <br>
         <router-view v-transition></router-view>
         <br>

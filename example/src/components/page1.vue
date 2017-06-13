@@ -12,7 +12,8 @@
 		name:'page1',
 		data(){
 			return {
-				vugConfig:{
+				vuegConfig
+:{
 					forwardAnim:'zoomInUp'
 				}
 			}
@@ -23,7 +24,7 @@
 	section{
 		text-align: center;
 		background-color: #d1c4e9;	
-		height: 800px;
+		height: 600px;
 	}
 	h1{
 		margin:0;
