@@ -19,7 +19,7 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 ![演示动态图][3]
 
 ----------
-## 使用方法 / Usage ##
+## 使用方法 / Usage 
 
 0、安装 / Installation
 
