@@ -61,7 +61,7 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
                     name:'my'
                 }], //默认为[]，name对应路由的name,以实现类似app中点击tab页面水平转场效果，如tab[1]到tab[0]，会使用backAnim动画，tab[1]到tab[2]，会使用forwardAnim动画  
             tabsDisable: false, //值为true时，tabs间的转场没有动画，默认为false  
-            disable: false, //禁用转场动画，默认为false    
+            disable: false, //禁用转场动画，默认为false，嵌套路由默认为true    
         }  
         Vue.use(vueg, router,options)
 
@@ -92,7 +92,7 @@ options还可以在每个组件的data中配置，举例：
                 }
         }
     }
-    
+
 
 *对于嵌套路由，默认为关闭动画，需要在组件的data.vuegConfig中配置disable为false启用
 

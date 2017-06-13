@@ -32,16 +32,15 @@ transition.install = (Vue, router, options = {}) => {
             return
 
         let bacgrEle = document.createElement('div')
-        bacgrEle.id = 'vug-background'
+        bacgrEle.id = 'vueg-background'
             //每次重新挂载vue都会情况被挂载元素，所有每次都要再添加进去
-        if (!document.getElementById('vug-background'))
+        if (!document.getElementById('vueg-background'))
             document.getElementById(op.vueEl).appendChild(bacgrEle)
-        let vugBac = document.getElementById('vug-background')
-            // console.log(document.documentElement.clientHeight)
-            // vugBac.style.maxHeight = document.documentElement.clientHeight + 'px'
-        vugBac.innerHTML = ''
-        vugBac.classList = []
-        vugBac.appendChild(this.$el)
+        let vuegBac = document.getElementById('vueg-background')
+            // vuegBac.style.maxHeight = document.documentElement.clientHeight + 'px'
+        vuegBac.innerHTML = ''
+        vuegBac.classList = []
+        vuegBac.appendChild(this.$el)
     }
     Vue.mixin({
         mounted: addEffect,
@@ -189,6 +188,9 @@ transition.install = (Vue, router, options = {}) => {
             el.classList.remove(op.forwardAnim)
             el.classList.remove(op.backAnim)
             el.style.animationDuration = '0s'
+            let vuegBac = document.getElementById('vueg-background')
+            if (vuegBac)
+                vuegBac.innerHTML = ''
         }, op.duration * 1000)
         setTimeout(() => {
             el.classList.remove('fadeIn')
