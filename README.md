@@ -92,6 +92,9 @@ options还可以在每个组件的data中配置，举例：
                 }
         }
     }
+    
+
+*对于嵌套路由，默认为关闭动画，需要在组件的data.vuegConfig中配置disable为false启用
 
 
   [1]: https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif

@@ -112,25 +112,28 @@ transition.install = (Vue, router, options = {}) => {
         let matched = to.matched[0]
         if (matched && matched.instances) {
             instances = matched.instances
-            addEffect(instances)
         } else
             instances = null
     })
 
     function isInRoute() {
-        // console.log(instances,
-        //     instances.default._uid, 
-        //     this, this._uid)
+
+        //对于嵌套路由，默认为关闭动画，需要在组件的data.vuegConfig中配置disable为false启用
+        if (this.vuegConfig && this.vuegConfig.disable === false) {
+            this.$el.style.boxShadow = 'initial'
+            return true
+        }
+        //router.afterEach后获得新页面的组件，组件渲染或激活后触发addEffect
         if (instances && instances.default && instances.default._uid !== this._uid)
             return false
         else return true
     }
 
+    //router.afterEach后获得新页面的组件，组件渲染或激活后触发addEffect
     function addEffect(ins = this) {
         //不属于当前进场路由匹配到的组件，则无动画
-        if (!isInRoute.call(this))
+        if (!isInRoute.call(ins))
             return
-
         if (!ins) //无参
             return
         if (binding.value === false)
