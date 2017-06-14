@@ -36,6 +36,7 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
      import 'vueg/css/transition-min.css'
      Vue.use(vueg, router)     //←注意这一句应该在router实例化(router = new VueRouter({})之后
 
+现在，app已经具备默认的转场特效能力了。
 
 2、`<router-view>`上添加v-transition="false"，可以禁用动画，如：  
 

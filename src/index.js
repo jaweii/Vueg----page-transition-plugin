@@ -11,7 +11,7 @@ transition.install = (Vue, router, options = {}) => {
         }
     })
 
-    //旧组件退出后会被销毁，所以建个容器，再销毁后重新挂在上去，作为“底色”
+    //旧组件退出后会被销毁，所以建个容器，在销毁后重新挂在上去，作为“底色”
     function setBackground() {
         //不属于当前进场路由匹配到的组件，则不处理
         let obj = this.$el.classList
@@ -34,7 +34,7 @@ transition.install = (Vue, router, options = {}) => {
         bacgrEle.id = 'vueg-background'
         let vm = instances.default
         if (vm) {
-            //每次重新挂载vue都会情况被挂载元素，所有每次都要再添加进去
+            //每次重新挂载vue都会清空被挂载元素，所有每次都要再添加进去
             let vuegBac = document.getElementById('vueg-background')
                 //不存在就插入
             if (!vuegBac) {
@@ -195,8 +195,8 @@ transition.install = (Vue, router, options = {}) => {
             el.classList.remove(op.backAnim)
             el.style.animationDuration = '0s'
             let vuegBac = document.getElementById('vueg-background')
-            // if (vuegBac)
-                // vuegBac.innerHTML = ''
+            if (vuegBac)
+                vuegBac.innerHTML = ''
         }, op.duration * 1000)
         setTimeout(() => {
             el.classList.remove('fadeIn')
