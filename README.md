@@ -47,14 +47,14 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
     
     
 ----------
-## 配置项 ##
+## 配置项 / Config ##
         const options={  
-            duration: '0.3',              //转场动画时长，默认为0.3  
-            firstEntryDisable: false,     //值为true时禁用首次进入的渐进动画，默认为false  
-            firstEntryDuration: '.6',     //首次进入渐进动画时长，默认为.6  
+            duration: '0.3',              //转场动画时长，默认为0.3，单位秒
+            firstEntryDisable: false,     //值为true时禁用首次进入应用时的渐现动画，默认为false  
+            firstEntryDuration: '.6',     //首次进入应用时的渐现动画时长，默认为.6  
             forwardAnim: 'fadeInRight',   //前进动画，默认为fadeInRight  
             backAnim: 'fadeInLeft',       //后退动画，默认为fedeInLeft  
-            sameDepthDisable: false,      //url级别相同时禁用动画，默认为false  
+            sameDepthDisable: false,      //url深度相同时禁用动画，默认为false  
             tabs: [{
                     name:'home'
                 },{
