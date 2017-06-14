@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    babel = require('gulp-babel'),
     autoprefixer = require('gulp-autoprefixer'),
     rename = require("gulp-rename"),
     cleanCSS = require('gulp-clean-css'),
@@ -16,13 +17,10 @@ gulp.task('css', ['clean'], function() {
         .pipe(gulp.dest('./css'))
 })
 gulp.task('js', function(fn) {
-    pump([
-            gulp.src('./src/*.js'),
-            // uglify(),
-            gulp.dest('./')
-        ],
-        fn
-    );
+    return gulp.src('./src/*.js')
+        .pipe(babel({ presets: ['es2015'] }))
+        .pipe(uglify())
+        .pipe(gulp.dest('./'))
 })
 gulp.task('clean', function(fn) {
     return del(['./css/*-min.css'], fn)

@@ -48,7 +48,6 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 ----------
 ## 配置项 ##
         const options={  
-            vueEl: 'app', //new Vue({el: '#app'),vue所挂载元素的ID，默认为app，此配置用于保持转场时的“底色”
             duration: '0.3', //转场动画时长，默认为0.3  
             firstEntryDisable: false, //值为true时禁用首次进入的渐进动画，默认为false  
             firstEntryDuration: '.6', //首次进入渐进动画时长，默认为.6  
@@ -89,12 +88,18 @@ options还可以在每个组件的data中配置，举例：
             return {
                 vuegConfig:{  
                     forwardAnim:'bounceInUp',//options所有配置可以写在这个对象里，会覆盖全局的配置
+                    disable:false//对于嵌套路由，默认为关闭动画，需要在组件的data.vuegConfig中配置disable为false启用
                 }
         }
     }
 
 
-*对于嵌套路由，默认为关闭动画，需要在组件的data.vuegConfig中配置disable为false启用
+一些注意点：
+1、基于vue v2.3.4版本开发、调试；
+2、非新项目使用这个插件后，因为css问题，可能造成你的项目有些地方排版错乱，那就需要调整css；
+3、每个路由匹配的组件模板高度最好大于等于屏幕高度，否则转场不好看，可以为`<router-view>`添加class，设置`min-height:100%;`
+4、插件60Kb左右大小，其中css 57Kb，如果想减小，可以编辑`vueg/css/transition-min.css`，将不需要的动画样式删除；
+
 
 
   [1]: https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif

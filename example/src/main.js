@@ -19,7 +19,7 @@ const store = new Vuex.Store({
         page3: {
             forwardAnim: 'fadeInRight',
             duration: '0.3',
-            backAnim:'fadeInLeft'
+            backAnim: 'fadeInLeft'
         }
     },
     mutations: {

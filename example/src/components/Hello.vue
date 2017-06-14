@@ -58,6 +58,7 @@ ul {
 }
 
 li {
+    text-align: center;
     display: inline-block;
     margin: 0 10px;
 }
@@ -69,6 +70,7 @@ a {
 .hello {
     height: 800px;
     background-color: #ffefc3;
+    text-align: center;
 }
 
 .publish {

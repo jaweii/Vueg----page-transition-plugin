@@ -11,7 +11,6 @@ transition.install = (Vue, router, options = {}) => {
         }
     })
 
-
     //旧组件退出后会被销毁，所以建个容器，再销毁后重新挂在上去，作为“底色”
     function setBackground() {
         //不属于当前进场路由匹配到的组件，则不处理
@@ -33,14 +32,21 @@ transition.install = (Vue, router, options = {}) => {
 
         let bacgrEle = document.createElement('div')
         bacgrEle.id = 'vueg-background'
+        let vm = instances.default
+        if (vm) {
             //每次重新挂载vue都会情况被挂载元素，所有每次都要再添加进去
-        if (!document.getElementById('vueg-background'))
-            document.getElementById(op.vueEl).appendChild(bacgrEle)
-        let vuegBac = document.getElementById('vueg-background')
-            // vuegBac.style.maxHeight = document.documentElement.clientHeight + 'px'
-        vuegBac.innerHTML = ''
-        vuegBac.classList = []
-        vuegBac.appendChild(this.$el)
+            let vuegBac = document.getElementById('vueg-background')
+                //不存在就插入
+            if (!vuegBac) {
+                vm.$el.parentElement.appendChild(bacgrEle)
+                vuegBac = bacgrEle
+            }
+
+            vuegBac.innerHTML = ''
+            vuegBac.classList = []
+            vuegBac.appendChild(this.$el)
+            console.log(vuegBac)
+        }
     }
     Vue.mixin({
         mounted: addEffect,
@@ -189,8 +195,8 @@ transition.install = (Vue, router, options = {}) => {
             el.classList.remove(op.backAnim)
             el.style.animationDuration = '0s'
             let vuegBac = document.getElementById('vueg-background')
-            if (vuegBac)
-                vuegBac.innerHTML = ''
+            // if (vuegBac)
+                // vuegBac.innerHTML = ''
         }, op.duration * 1000)
         setTimeout(() => {
             el.classList.remove('fadeIn')
@@ -200,7 +206,6 @@ transition.install = (Vue, router, options = {}) => {
     function _initOptions() {
         //默认配置
         op = {
-            vueEl: 'app', //new Vue({el: '#app'),vue所挂载元素的ID，默认为app，此配置用于保持转场时的“底色”
             duration: '0.3', //动画时长
             firstEntryDisable: false, //值为true时禁用首次进入的渐进动画
             firstEntryDuration: '.6', //首次进入渐进动画时长
