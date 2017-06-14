@@ -30,10 +30,11 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
      import Vue from 'vue' 
      import App from './App' 
      import router from './router'
+
      //  ↓↓↓↓↓↓↓↓↓↓↓↓
      import vueg from 'vueg'    
      import 'vueg/css/transition-min.css'
-     Vue.use(vueg, router)//←注意这一句应该在router实例化(router = new VueRouter({})之后
+     Vue.use(vueg, router)     //←注意这一句应该在router实例化(router = new VueRouter({})之后
 
 
 2、`<router-view>`上添加v-transition="false"，可以禁用动画，如：  
@@ -94,11 +95,11 @@ options还可以在每个组件的data中配置，举例：
     }
 
 
-一些注意点：
-1、基于vue v2.3.4版本开发、调试；
-2、非新项目使用这个插件后，因为css问题，可能造成你的项目有些地方排版错乱，那就需要调整css；
-3、每个路由匹配的组件模板高度最好大于等于屏幕高度，否则转场不好看，可以为`<router-view>`添加class，设置`min-height:100%;`
-4、插件60Kb左右大小，其中css 57Kb，如果想减小，可以编辑`vueg/css/transition-min.css`，将不需要的动画样式删除；
+一些注意点：  
+1、基于vue v2.3.4版本开发、调试；  
+2、非新项目使用这个插件后，因为css问题，可能造成你的项目有些地方排版错乱，那就需要调整css；  
+3、每个路由匹配的组件模板高度最好大于等于屏幕高度，否则转场不好看，可以为`<router-view>`  添加class，设置`min-height:100%;`  
+4、插件60Kb左右大小，其中css 57Kb，如果想减小，可以编辑`vueg/css/transition-min.css`  ，将不需要的动画样式删除；  
 
 
 
