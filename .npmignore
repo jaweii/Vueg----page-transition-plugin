@@ -1,3 +1,5 @@
-.DS_Store
+.DS_S
+tore
 node_modules/
 dist/
+example

@@ -45,7 +45,7 @@ transition.install = (Vue, router, options = {}) => {
             vuegBac.innerHTML = ''
             vuegBac.classList = []
             vuegBac.appendChild(this.$el)
-            console.log(vuegBac)
+            // console.log(vuegBac)
         }
     }
     Vue.mixin({
