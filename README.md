@@ -12,6 +12,8 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 
 ## 效果图 / Demo ： ##
 
+**[live demo](https://jaweii.github.io/vueg/example/dist/#/)**
+
 ![演示动态图][1]
 
 项目实战效果：
