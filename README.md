@@ -12,7 +12,7 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 
 ## 效果图 / Demo ： ##
 
-**[live demo](https://jaweii.github.io/vueg/example/dist/#/)** | **[GitHub](https://jaweii.github.io/vueg/example/dist/#/)**
+**[live demo](https://jaweii.github.io/vueg/example/dist/#/)** | **[GitHub](https://github.com/jaweii/vueg)**
 
 ![演示动态图][1]
 
@@ -107,7 +107,7 @@ options还可以在每个组件的data中配置，举例：
 
   
 
-    **[GitHub](https://jaweii.github.io/vueg/example/dist/#/)**  
+    **[GitHub](https://github.com/jaweii/vueg)**  
 
 
         
