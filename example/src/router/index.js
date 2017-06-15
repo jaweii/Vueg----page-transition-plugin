@@ -10,8 +10,12 @@ import page21 from '@/components/page21'
 Vue.use(Router)
 
 export default new Router({
-    mode:'history',
+    // mode:'history',
     routes: [{
+        path: '',
+        name: 'default',
+        component: Hello
+    }, {
         path: '/',
         name: 'Hello',
         component: Hello
@@ -24,15 +28,15 @@ export default new Router({
         name: 'page2',
         component: page2,
         children: [{
-        	path:'',
-        	component:page20
-        },{
+            path: '',
+            component: page20
+        }, {
             path: 'page2-1',
             component: page21
         }]
-    },{
-        path:'/page-3',
-        name:'page3',
-        component:page3
+    }, {
+        path: '/page-3',
+        name: 'page3',
+        component: page3
     }]
 })
