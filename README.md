@@ -12,7 +12,7 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 
 ## 效果图 / Demo ： ##
 
-**[live demo](https://jaweii.github.io/vueg/example/dist/#/)**
+**[live demo](https://jaweii.github.io/vueg/example/dist/#/)** | **[GitHub](https://jaweii.github.io/vueg/example/dist/#/)**
 
 ![演示动态图][1]
 
@@ -105,8 +105,13 @@ options还可以在每个组件的data中配置，举例：
 4、插件60Kb左右大小，其中css 57Kb，如果想减小，可以编辑`vueg/css/transition-min.css`  ，将不需要的动画样式删除；  
 
 
+  
+
+    **[GitHub](https://jaweii.github.io/vueg/example/dist/#/)**  
+
+
+        
 
   [1]: https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif
   [2]: https://raw.githubusercontent.com/jaweii/vueg/master/image/vueg.JPG
   [3]: https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF33.gif
-
