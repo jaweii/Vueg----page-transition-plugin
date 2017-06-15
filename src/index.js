@@ -45,7 +45,7 @@ transition.install = (Vue, router, options = {}) => {
             vuegBac.innerHTML = ''
             vuegBac.classList = []
             vuegBac.appendChild(this.$el)
-            // console.log(vuegBac)
+                // console.log(vuegBac)
         }
     }
     Vue.mixin({
@@ -73,7 +73,7 @@ transition.install = (Vue, router, options = {}) => {
                 transitionType = 'forward'
             }
             //深度相同时禁用动画
-            if (op.sameDepthdisable)
+            if (op.sameDepthDisable)
                 transitionType = ''
 
             lastPath = from.path
@@ -211,7 +211,7 @@ transition.install = (Vue, router, options = {}) => {
             firstEntryDuration: '.6', //首次进入渐进动画时长
             forwardAnim: 'fadeInRight', //前进动画
             backAnim: 'fadeInLeft', //后退动画
-            sameDepthdisable: false, //url级别相同时禁用动画
+            sameDepthDisable: false, //url级别相同时禁用动画
             tabs: [], //name填写对应路由的name,以实现类似app中点击tab页面水平转场效果，如tab[1]到tab[0]，会使用forwardAnim动画，tab[1]到tab[2]，会使用backAnim动画
             tabsDisable: false, //值为true时，tabs间的转场没有动画
             disable: false //禁用转场动画
