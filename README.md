@@ -106,6 +106,12 @@ options还可以在每个组件的data中配置，举例：
 5、配置项中`forwardAnim` 、 `backAnim` 的值本质上是css类名，所以你也可以自己写css动画，然后给定你自定义的类名作为值；
 
 
+----------
+## 下一功能 / Next ##  
+
+新页面从手指按下处放大载入的转场效果  
+
+
 
 
   [1]: https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif
