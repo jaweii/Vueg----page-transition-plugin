@@ -3,7 +3,7 @@
 
 ## VUEG ##
 
-为vue-router添加转场效果，只需要`Vue.use(vueg)`，即可获得转场效果，并能够根据url级别(/)和历史记录判断是前进和后退。
+为vue-router添加转场效果，只需要`Vue.use(vueg)`，即可获得转场效果，并能够根据url深度(/)和历史记录判断是前进和后退。
 
 just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 
@@ -102,7 +102,8 @@ options还可以在每个组件的data中配置，举例：
 1、基于vue v2.3.4版本开发、调试；  
 2、非新项目使用这个插件后，因为css问题，可能造成原本元素在转场动画时有些地方排版错乱，那就需要调整css；  
 3、每个路由匹配的组件模板高度最好大于等于屏幕高度，否则转场不好看，可以为`<router-view>`  添加class，设置`min-height:100%;`  
-4、插件60Kb左右大小，其中css 57Kb，如果想减小，可以编辑`vueg/css/transition-min.css`  ，将不需要的动画样式删除；   
+4、未`npm run build`前，插件20Kb左右大小,其中css 17Kb，如果想减小，可以编辑`vueg/css/transition.css`  ，将不需要的动画样式删除，然后在`vueg/`下运行`npm install`-`gulp css`，即可；   
+5、配置项中`forwardAnim` 、 `backAnim` 的值本质上是css类名，所以你也可以自己写css动画，然后给定你自定义的类名作为值；
 
 
 

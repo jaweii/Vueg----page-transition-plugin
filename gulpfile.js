@@ -9,9 +9,9 @@ var gulp = require('gulp'),
     concat = require('gulp-concat')
 
 gulp.task('css', ['clean'], function() {
+    // .pipe(autoprefixer())
     return gulp.src('./css/*.css')
         .pipe(concat('transition.css'))
-        .pipe(autoprefixer())
         .pipe(cleanCSS())
         .pipe(rename({ suffix: '-min' }))
         .pipe(gulp.dest('./css'))
