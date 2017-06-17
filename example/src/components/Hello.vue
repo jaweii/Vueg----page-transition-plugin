@@ -6,6 +6,21 @@
             <li><a @click="$router.push('page-1')">底部打开</a></li>
             <li><a @click="$router.push('page-2')">默认转场效果</a></li>
             <li><a @click="$router.push('page-3')">bounce转场</a></li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <li><a @click="$router.push('page-4')">touch点转场</a></li>
+            <li><a @click="$router.push('page-4')">touch点转场</a></li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <li><a @click="$router.push('page-4')">touch点转场</a></li>
+            <li><a @click="$router.push('page-4')">touch点转场</a></li>
         </ul>
         <button @click="$router.push('page-1')" class="publish">+</button>
     </div>
@@ -15,8 +30,7 @@ export default {
     name: 'hello',
     data() {
         return {
-            vuegConfig
-: {
+            vuegConfig: {
                 forwardAnim: this.$store.state.page3.forwardAnim,
                 backAnim: this.$store.state.page3.backAnim,
                 duration: this.$store.state.page3.duration
@@ -49,18 +63,20 @@ h2 {
     font-weight: normal;
     margin: 0;
     padding-top: 50px;
-    color:#4c2c2d;
+    color: #4c2c2d;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 li {
     text-align: center;
     display: inline-block;
-    margin: 0 10px;
+    margin: 10px;
 }
 
 a {

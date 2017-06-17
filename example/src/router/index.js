@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import page1 from '@/components/page1'
 import page2 from '@/components/page2'
 import page3 from '@/components/page3'
+import page4 from '@/components/page4'
 import page20 from '@/components/page20'
 import page21 from '@/components/page21'
 
@@ -38,5 +39,9 @@ export default new Router({
         path: '/page-3',
         name: 'page3',
         component: page3
+    }, {
+        path: '/page-4',
+        name: 'page4',
+        component: page4
     }]
 })
