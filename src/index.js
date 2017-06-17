@@ -258,13 +258,19 @@ transition.install = (Vue, router, options = {}) => {
         }, op.firstEntryDuration * 1000);
     }
 
+    document.addEventListener('mousedown', getCoord)
     document.addEventListener('touchstart', getCoord)
-        // document.addEventListener('click', getCoord)
 
     //获得按下坐标
     function getCoord(e) {
-        coord.x = e.touches[0].clientX
-        coord.y = e.touches[0].clientY
+        if (e.type === 'mousedown') {
+            coord.x = e.clientX
+            coord.y = e.clientY
+        } else {
+            coord.x = e.touches[0].clientX
+            coord.y = e.touches[0].clientY
+        }
+
     }
 
 
