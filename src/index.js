@@ -263,12 +263,13 @@ transition.install = (Vue, router, options = {}) => {
 
     //获得按下坐标
     function getCoord(e) {
+        console.log(e)
         if (e.type === 'mousedown') {
-            coord.x = e.clientX
-            coord.y = e.clientY
+            coord.x = e.pageX
+            coord.y = e.pageY
         } else {
-            coord.x = e.touches[0].clientX
-            coord.y = e.touches[0].clientY
+            coord.x = e.touches[0].pageX
+            coord.y = e.touches[0].pageY
         }
 
     }
