@@ -223,14 +223,16 @@ transition.install = (Vue, router, options = {}) => {
                             }
                             @keyframes touchPoint {
                                 from {
-                                    opacity:0.8;
+                                    opacity:0.5;
                                     transform: scale(0, 0);
                                     left:${-centerPoint.x+coord.x}px;
                                     top:${-centerPoint.y+coord.y}px;
                                 }
-                                to{
+                                to{ 
                                     left:0;
                                     top:0;
+                                    transform: scale(1, 1);
+                                    opacity:1;
                                 }
                             }`
                     let textNode = document.createTextNode(cssText)
@@ -263,7 +265,6 @@ transition.install = (Vue, router, options = {}) => {
 
     //获得按下坐标
     function getCoord(e) {
-        console.log(e)
         if (e.type === 'mousedown') {
             coord.x = e.pageX
             coord.y = e.pageY
