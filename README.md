@@ -68,23 +68,29 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
         }  
         Vue.use(vueg, router,options)
 
-`forwardAnim` 、 `backAnim` 提供以下值：  
-bounce  
-flash  
-pulse  
-rubberBand  
-shake  
-headShake  
-swing  
-....略...  
-slideInDown  
-slideInLeft  
-slideOutDown  
-slideOutLeft  
-slideOutRight  
-slideOutUp  
-预览效果，以及查看全部可用值，请访问：https://daneden.github.io/animate.css/
+  
+`forwardAnim` 、 `backAnim` 提供以下值：
+  
+`touchPoint` //页面从触摸点放大载入的转场效果  
+    
+以及animate.css中的值  
+`bounce`  
+`flash`  
+`pulse`  
+`rubberBand`  
+`shake`  
+`headShake`  
+`swing`  
+...略略略...  
+`slideInDown`  
+`slideInLeft`  
+`slideOutDown`  
+`slideOutLeft`  
+`slideOutRight`  
+`slideOutUp`  
 
+预览效果，以及查看全部可用值，请访问：https://daneden.github.io/animate.css/
+  
 
 options还可以在每个组件的data中配置，举例：  
 
@@ -106,10 +112,7 @@ options还可以在每个组件的data中配置，举例：
 5、配置项中`forwardAnim` 、 `backAnim` 的值本质上是css类名，所以你也可以自己写css动画，然后给定你自定义的类名作为值；
 
 
-----------
-## 下一功能 / Next ##  
 
-新页面从手指按下处放大载入的转场效果  
 
 
 

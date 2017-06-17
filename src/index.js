@@ -1,7 +1,9 @@
 let transition = {}
 transition.install = (Vue, router, options = {}) => {
     let route, lastPath, transitionType, binding = {},
-        op, instances //组件激活时判断是否属于route中，不属于无动画
+        op, //配置项
+        instances, //组件激活时判断是否属于route中，不属于无动画
+        coord = { x: 0, y: 0 } //按下坐标
 
     _initOptions()
 
@@ -179,16 +181,66 @@ transition.install = (Vue, router, options = {}) => {
             el.style.animationDuration = op.duration + 's'
 
         el.classList.add('animated')
+        let coordAnim = ['touchPoint']
+        let anim
         switch (transitionType) {
             case 'forward':
-                el.classList.add(op.forwardAnim)
+                anim = op.forwardAnim
                 break
             case 'back':
-                el.classList.add(op.backAnim)
+                anim = op.backAnim
                 break
             default:
                 break
         }
+        if (anim)
+            el.classList.add(anim)
+
+        //需要结合js获取触摸坐标的转场设置
+        let style,
+            head = document.head || document.getElementsByTagName('head')[0],
+            cssText
+        style = document.getElementById('vueg-style')
+        if (!style) {
+            style = document.createElement('style')
+            style.type = 'text/css'
+            style.id = 'vueg-style'
+            head.appendChild(style)
+        }
+        if (coordAnim.findIndex(item => item === anim) !== -1) {
+            switch (anim) {
+                case 'touchPoint':
+                    let centerPoint = {
+                        x: document.documentElement.clientWidth / 2,
+                        y: document.documentElement.clientHeight / 2
+                    }
+                    cssText = `.touchPoint{
+                                height:${document.documentElement.clientHeight}px!important;
+                                overflow:hidden;
+                                animation-timing-function:ease-in;
+                                animation-name:touchPoint;
+                                position: relative;
+                            }
+                            @keyframes touchPoint {
+                                from {
+                                    opacity:0.8;
+                                    transform: scale(0, 0);
+                                    left:${-centerPoint.x+coord.x}px;
+                                    top:${-centerPoint.y+coord.y}px;
+                                }
+                                to{
+                                    left:0;
+                                    top:0;
+                                }
+                            }`
+                    let textNode = document.createTextNode(cssText)
+                    style.appendChild(textNode)
+                    break
+                default:
+                    break
+            }
+        }
+
         //动画完成后移除class
         setTimeout(() => {
             el.classList.remove(op.forwardAnim)
@@ -197,11 +249,24 @@ transition.install = (Vue, router, options = {}) => {
             let vuegBac = document.getElementById('vueg-background')
             if (vuegBac)
                 vuegBac.innerHTML = ''
+
+            if (coordAnim.findIndex(item => item === anim) !== -1)
+                style.innerHTML = ''
         }, op.duration * 1000)
         setTimeout(() => {
             el.classList.remove('fadeIn')
         }, op.firstEntryDuration * 1000);
     }
+
+    document.addEventListener('touchstart', getCoord)
+        // document.addEventListener('click', getCoord)
+
+    //获得按下坐标
+    function getCoord(e) {
+        coord.x = e.touches[0].clientX
+        coord.y = e.touches[0].clientY
+    }
+
 
     function _initOptions() {
         //默认配置
