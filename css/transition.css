@@ -1,8 +1,9 @@
-#vueg-background {
+﻿#vueg-background {
     position: absolute;
     z-index: -1;
     top: 0;
     width: 100%;
+    height:inherit;
     overflow: hidden;
     background: #f8f8f8;
 }
