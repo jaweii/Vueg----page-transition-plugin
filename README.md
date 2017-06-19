@@ -73,7 +73,7 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
         Vue.use(vueg, router,options)
 
   
-`forwardAnim`  、  `backAnim` 提供以下值：
+`forwardAnim`  、  `backAnim` 提供以下值：  
 `ForwardAnim` 、 ` backAnim` provide the following values:
   
 `touchPoint` //页面从触摸点放大载入的转场效果 / The page is enlarged from the touch point  
@@ -94,7 +94,8 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
 `slideOutRight`  
 `slideOutUp`  
 
-预览效果，以及查看全部可用值，请访问：https://daneden.github.io/animate.css / Preview the effect, and see all available values, visit: https://daneden.github.io/animate.css/  
+预览效果，以及查看全部可用值，请访问：https://daneden.github.io/animate.css  
+Preview the effect, and see all available values, visit: https://daneden.github.io/animate.css/   
   
 
 options还可以在每个组件的`data`中配置，举例：  
