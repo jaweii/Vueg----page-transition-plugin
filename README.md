@@ -58,8 +58,8 @@ just need to add `Vue.use(vueg)` ,vue-router will have a transition effect.
             duration: '0.3',              //转场动画时长，默认为0.3，单位秒 / `animation-duration`  
             firstEntryDisable: false,     //值为true时禁用首次进入应用时的渐现动画，默认为false / When the value is true, in the process of the user into the app, app no transition effect,the default is false  
             firstEntryDuration: '.6',     //首次进入应用时的渐现动画时长，默认为.6  
-            forwardAnim: 'fadeInRight',   //前进动画，默认为fadeInRight / Forward transition effect  
-            backAnim: 'fadeInLeft',       //后退动画，默认为fedeInLeft / Back transition effect  
+            forwardAnim: 'fadeInRight',   //前进动画，默认为fadeInRight / Forward transition effect,the default is fadeInRight  
+            backAnim: 'fadeInLeft',       //后退动画，默认为fedeInLeft / Back transition effect,the default is fadeInLeft  
             sameDepthDisable: false,      //url深度相同时禁用动画，默认为false / When the url depth is the same, the effect is disabled,the default is false   
             tabs: [{
                     name:'home'

@@ -215,7 +215,7 @@ transition.install = (Vue, router, options = {}) => {
                         y: document.documentElement.clientHeight / 2
                     }
                     cssText = `.touchPoint{
-                                height:${document.documentElement.clientHeight}px!important;
+                                max-height:${document.documentElement.clientHeight}px!important;
                                 overflow:hidden;
                                 animation-timing-function:ease-in;
                                 animation-name:touchPoint;
