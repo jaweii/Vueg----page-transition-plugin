@@ -217,22 +217,22 @@ transition.install = (Vue, router, options = {}) => {
                     cssText = `.touchPoint{
                                 max-height:${document.documentElement.clientHeight}px!important;
                                 overflow:hidden;
-                                animation-timing-function:ease-in;
                                 animation-name:touchPoint;
                                 position: relative;
+                                animation-timing-function: linear;
                             }
                             @keyframes touchPoint {
                                 from {
                                     opacity:0.5;
-                                    transform: scale(0, 0);
+                                    transform: scale3d(0, 0, 0);
                                     left:${-centerPoint.x+coord.x}px;
                                     top:${-centerPoint.y+coord.y}px;
                                 }
                                 to{ 
+                                    opacity:1;
+                                    transform: scale3d(1, 1, 1);
                                     left:0;
                                     top:0;
-                                    transform: scale(1, 1);
-                                    opacity:1;
                                 }
                             }`
                     let textNode = document.createTextNode(cssText)
@@ -254,7 +254,7 @@ transition.install = (Vue, router, options = {}) => {
 
             if (coordAnim.findIndex(item => item === anim) !== -1)
                 style.innerHTML = ''
-        }, op.duration * 1000)
+        }, op.duration * 1000+300)//加300毫秒延迟 因为有时动画还没完成就被移除了
         setTimeout(() => {
             el.classList.remove('fadeIn')
         }, op.firstEntryDuration * 1000);
