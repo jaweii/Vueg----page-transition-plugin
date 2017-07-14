@@ -67,6 +67,7 @@
                     name:'my'
                 }],                       //默认为[]，'name'对应路由的name,以实现类似app中点击tab页面水平转场效果，如tabs[1]到tabs[0]，会使用backAnim动画，tabs[1]到tabs[2]，会使用forwardAnim动画  
             tabsDisable: false,           //值为true时，tabs间的转场没有动画，默认为false  
+            shadow:true,                  //值为false，转场时没有阴影的层次效果
             disable: false,               //禁用转场动画，默认为false，嵌套路由默认为true  
         }  
         Vue.use(vueg, router,options)
@@ -106,12 +107,14 @@ options还可以在每个组件的`data`中配置，举例：
     }
 
 
+
 其他：  
 1、基于vue v2.3.4版本和webkit内核浏览器开发、调试；  
 2、非新项目使用这个插件后，因为css问题，可能造成原本元素在转场动画时有些地方排版错乱，那就需要调整css；  
 3、每个路由匹配的组件模板高度最好大于等于屏幕高度，否则转场不好看，可以为`<router-view>`  添加class，设置`min-height:100vh;`  
-4、插件20Kb左右大小,其中css 17Kb，如果想减小，可以编辑`vueg/css/animate.css`  ，将不需要的动画样式删除，然后在`vueg/`下运行`npm install`-`gulp css`，即可；   
-5、配置项中`forwardAnim` 、 `backAnim` 的值本质上是css类名，所以你也可以自己写css动画，然后给定你自定义的类名作为值；
+4、插件20Kb左右大小,其中css 17Kb，如果想减小，可以编辑`vueg/css/animate.css`  ，将不需要的动画样式删除，然后在`vueg/`下运行`npm install`-`gulp css`，即可；
+5、如果你想只在个别页面中使用转场效果，可以将全局配置中的disable设为false，个别页面中设置disable为true   
+6、配置项中`forwardAnim` 、 `backAnim` 的值本质上是css类名，所以你也可以自己写css动画，然后给定你自定义的类名作为值；
 
 
 

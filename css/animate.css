@@ -1,7 +1,6 @@
 .animated {
     animation-duration: 1s;
     animation-fill-mode: both;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, .156863), 0 3px 10px rgba(0, 0, 0, .227451);
 }
 
 .animated.infinite {
