@@ -3,7 +3,8 @@ transition.install = (Vue, router, options = {}) => {
     let route, lastPath, transitionType, binding = {},
         op, //配置项
         instances, //组件激活时判断是否属于route中，不属于无动画
-        coord = { x: 0, y: 0 } //按下坐标
+        coord = { x: 0, y: 0 }, //按下坐标
+        position = { x: 0, y: 0 }
 
     _initOptions()
 
@@ -64,14 +65,22 @@ transition.install = (Vue, router, options = {}) => {
             vuegBac.innerHTML = ''
             vuegBac.classList = []
             vuegBac.appendChild(this.$el)
-                // console.log(vuegBac)
+            
+            // 恢复之前的滚动条位置
+            vuegBac.scrollLeft = position.x
+            vuegBac.scrollTop = position.y
         }
     }
     Vue.mixin({
         mounted: addEffect,
         activated: addEffect,
         beforeDestroy: setBackground,
-        deactivated: setBackground
+        deactivated: setBackground,
+        beforeRouteEnter (to, from, next) {
+            // 记录滚动条位置
+            position = { x: window.pageXOffset, y: window.pageYOffset }
+            next()
+        },
     })
 
     router.beforeEach((to, from, next) => {
