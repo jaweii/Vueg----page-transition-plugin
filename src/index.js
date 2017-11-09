@@ -167,6 +167,12 @@ transition.install = (Vue, router, options = {}) => {
             return
         if (!el.parentElement)
             return
+        
+        // Fix: Error in mounted hook: "TypeError: Cannot set property 'animationDuration' of undefined"
+        // 如果组件内使用了 beforeRouteEnter 钩子函数并且延迟执行了 next 函数，会导致第一次 el 为注释，所以判断一下 el 的类型必须为 Element
+        // https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType
+        if (el.nodeType !== 1)
+            return
 
         //防止某组件的配置影响其他组件，每次都初始化一下数据
         _initOptions()
