@@ -1,50 +1,15 @@
 {
-  "_args": [
-    [
-      "vueg",
-      ""
-    ]
-  ],
-  "_from": "vueg@latest",
-  "_id": "vueg@1.1.6",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/vueg",
-  "_nodeVersion": "6.2.0",
-  "_npmOperationalInternal": {
-    "host": "s3://npm-registry-packages",
-    "tmp": "tmp/vueg-1.1.6.tgz_1497337804288_0.18585949740372598"
+  "name": "vueg",
+  "version": "1.1.6",
+  "description": "为vue-router添加转场效果，只需要在<router-view v-transition></router-view>加上v-transition，即可获得转场效果，并能够根据url级别(/)和历史记录判断是前进和后退。",
+  "main": "index.js",
+  "dependencies": {
+    "vuet": "^0.0.6"
   },
-  "_npmUser": {
-    "email": "10005945485@qq.com",
-    "name": "jawei"
-  },
-  "_npmVersion": "3.8.9",
-  "_phantomChildren": {},
-  "_requested": {
-    "name": "vueg",
-    "raw": "vueg",
-    "rawSpec": "",
-    "scope": null,
-    "spec": "latest",
-    "type": "tag"
-  },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/vueg/-/vueg-1.1.6.tgz",
-  "_shasum": "8041cf235ac6f07b66c5a37bc372012708a4696e",
-  "_shrinkwrap": null,
-  "_spec": "vueg",
-  "_where": "",
-  "author": {
-    "name": "jawei"
-  },
-  "dependencies": {},
-  "description": "为 webApp 提供转场特效的开源 Vue 插件 / Make vue-router have a transition effect",
   "devDependencies": {
     "autoprefixer": "^7.1.1",
-    "babel-preset-es2015": "^6.24.1",
+    "chalk": "^1.1.3",
+    "clone": "^2.1.1",
     "css-loader": "^0.28.4",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
