@@ -65,7 +65,7 @@ transition.install = (Vue, router, options = {}) => {
             vuegBac.innerHTML = ''
             vuegBac.classList = []
             vuegBac.appendChild(this.$el)
-            
+
             // 恢复之前的滚动条位置
             vuegBac.scrollLeft = position.x
             vuegBac.scrollTop = position.y
@@ -76,7 +76,7 @@ transition.install = (Vue, router, options = {}) => {
         activated: addEffect,
         beforeDestroy: setBackground,
         deactivated: setBackground,
-        beforeRouteEnter (to, from, next) {
+        beforeRouteEnter(to, from, next) {
             // 记录滚动条位置
             position = { x: window.pageXOffset, y: window.pageYOffset }
             next()
@@ -176,7 +176,7 @@ transition.install = (Vue, router, options = {}) => {
             return
         if (!el.parentElement)
             return
-        
+
         // Fix: Error in mounted hook: "TypeError: Cannot set property 'animationDuration' of undefined"
         // 如果组件内使用了 beforeRouteEnter 钩子函数并且延迟执行了 next 函数，会导致第一次 el 为注释，所以判断一下 el 的类型必须为 Element
         // https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType
@@ -285,6 +285,7 @@ transition.install = (Vue, router, options = {}) => {
                 el.classList.remove(op.forwardAnim)
                 el.classList.remove(op.backAnim)
                 el.style.animationDuration = '0s'
+                el.style.boxShadow = null
                 let vuegBac = document.getElementById('vueg-background')
                 if (vuegBac)
                     vuegBac.innerHTML = ''
