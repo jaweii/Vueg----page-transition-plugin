@@ -1,10 +1,9 @@
 {
   "name": "vueg",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "为vue-router添加转场效果，只需要在<router-view v-transition></router-view>加上v-transition，即可获得转场效果，并能够根据url级别(/)和历史记录判断是前进和后退。",
   "main": "index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "babel-cli": "^6.26.0",
