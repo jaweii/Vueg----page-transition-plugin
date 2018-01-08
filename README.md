@@ -13,7 +13,7 @@
 
 ## 效果图：
 
-[单页应用 Demo](https://jaweii.github.io/vueg/example/dist/#/) \| [后端渲染应用Demo](http://yun.buzhundongcom)
+[单页应用 Demo](https://jaweii.github.io/vueg/example/dist/#/) 
 
 [![](https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif "演示动态图")](https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif)
 
