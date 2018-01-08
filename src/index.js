@@ -1,24 +1,20 @@
 let transition = {}
 transition.install = (Vue, router, options = {}) => {
-    let route, lastPath, transitionType, binding = {},
+    let route, lastPath, transitionType,
         op, //配置项
-        instances, //组件激活时判断是否属于route中，不属于无动画
         coord = { x: 0, y: 0 }, //按下坐标
-        position = { x: 0, y: 0 }
+        position = { x: 0, y: 0 },
+        lastComponent
 
     _initOptions()
 
-    Vue.directive('transition', {
-        bind(el, _binding, vnode, oldVnode) {
-            binding = _binding
-        }
+    //全局vueg配置
+    Object.keys(options).forEach(key => {
+        op[key] = options[key]
     })
 
     //旧组件退出后会被销毁，所以建个容器，在销毁后重新挂在上去，作为“底色”
     function setBackground() {
-        //不属于当前进场路由匹配到的组件，则不处理
-
-        // this.$el.classList.add('animated','fadeOut')
 
         let obj = this.$el.classList
         if (!obj)
@@ -34,53 +30,52 @@ transition.install = (Vue, router, options = {}) => {
                     isInArr = true
             })
             //我想屎。。。
-        if (!isInArr)
+        if (!isInArr) //已经添加动画了不再添加
             return
 
         let bacgrEle = document.createElement('div')
         bacgrEle.id = 'vueg-background'
-        let vm = instances.default
-        if (vm) {
+        if (op.disable)
+            return
 
-            //获取组件vueg配置
-            let vuegConfig = vm.$data.vuegConfig
-            if (vuegConfig) {
-                Object.keys(vuegConfig).forEach(key => {
-                    op[key] = vuegConfig[key]
-                })
-            }
-
-            //禁用转场则不设置底色
-            if (op.disable)
-                return
-
-            //每次重新挂载vue都会清空被挂载元素，所有每次都要再添加进去
-            let vuegBac = document.getElementById('vueg-background')
-                //不存在就插入
-            if (!vuegBac) {
-                vm.$el.parentElement.appendChild(bacgrEle)
-                vuegBac = bacgrEle
-            }
-
-            vuegBac.innerHTML = ''
-            vuegBac.classList = []
-            vuegBac.appendChild(this.$el)
-
-            // 恢复之前的滚动条位置
-            vuegBac.scrollLeft = position.x
-            vuegBac.scrollTop = position.y
+        //每次重新挂载vue都会清空被挂载元素，所有每次都要再添加进去
+        let vuegBac = document.getElementById('vueg-background')
+            //不存在就插入
+        if (!vuegBac) {
+            document.body.appendChild(bacgrEle)
+            vuegBac = bacgrEle
         }
+
+        vuegBac.innerHTML = ''
+        vuegBac.classList = []
+        vuegBac.appendChild(this.$el)
+
+        // 恢复之前的滚动条位置
+        vuegBac.scrollLeft = position.x
+        vuegBac.scrollTop = position.y
     }
+    Vue.directive('transition', {
+        inserted(el, binding, vnode, oldVnode) {
+            addEffect(vnode.componentInstance, el)
+        }
+    })
     Vue.mixin({
-        mounted: addEffect,
-        activated: addEffect,
-        beforeDestroy: setBackground,
-        deactivated: setBackground,
+        beforeDestroy: op.nuxt ? null : setBackground,
+        deactivated: op.nuxt ? null : setBackground,
         beforeRouteEnter(to, from, next) {
             // 记录滚动条位置
             position = { x: window.pageXOffset, y: window.pageYOffset }
             next()
         },
+        beforeRouteLeave(ro, from, next) {
+            lastComponent = this
+            next()
+        },
+        transition: op.nuxt ? {
+            mode: null,
+            css: false,
+            leave(el, done) {}
+        } : null
     })
 
     router.beforeEach((to, from, next) => {
@@ -137,42 +132,16 @@ transition.install = (Vue, router, options = {}) => {
                     transitionType = ''
             }
         }
-
-        //获取进场的组件instances，{default:component}
-        let matched = to.matched[0]
-        if (matched && matched.instances) {
-            instances = matched.instances
-        } else
-            instances = null
         next()
     })
 
-    function isInRoute() {
-
-        //对于嵌套路由，默认为关闭动画，需要在组件的data.vuegConfig中配置disable为false启用
-        if (this.vuegConfig && this.vuegConfig.disable === false) {
-            // this.$el.style.boxShadow = 'initial'
-            return true
-        }
-        //router.afterEach后获得新页面的组件，组件渲染或激活后触发addEffect
-        if (instances && instances.default && instances.default._uid !== this._uid)
-            return false
-        else return true
-    }
-
     //router.afterEach后获得新页面的组件，组件渲染或激活后触发addEffect
-    function addEffect(ins = this) {
-        //不属于当前进场路由匹配到的组件，则无动画
-        if (!isInRoute.call(ins))
-            return
+    function addEffect(ins = this, el) {
         if (!ins) //无参
-            return
-        if (binding.value === false)
             return
         if (!route)
             return
-        let el = this.$el
-        if (!el) //容错
+        if (!el)
             return
         if (!el.parentElement)
             return
@@ -192,7 +161,7 @@ transition.install = (Vue, router, options = {}) => {
         })
 
         //组件vueg配置
-        let vuegConfig = this.$data.vuegConfig
+        let vuegConfig = ins.$data.vuegConfig
 
         if (vuegConfig) {
             Object.keys(vuegConfig).forEach(key => {
@@ -286,9 +255,15 @@ transition.install = (Vue, router, options = {}) => {
                 el.classList.remove(op.backAnim)
                 el.style.animationDuration = '0s'
                 el.style.boxShadow = null
+
                 let vuegBac = document.getElementById('vueg-background')
-                if (vuegBac)
+                if (vuegBac) {
                     vuegBac.innerHTML = ''
+                }
+                if (op.nuxt && lastComponent) {
+                    vuegBac = lastComponent.$el
+                    vuegBac && vuegBac.parentElement.removeChild(vuegBac)
+                }
 
                 if (coordAnim.findIndex(item => item === anim) !== -1)
                     style.innerHTML = ''
@@ -326,9 +301,10 @@ transition.install = (Vue, router, options = {}) => {
             tabs: [], //name填写对应路由的name,以实现类似app中点击tab页面水平转场效果，如tab[1]到tab[0]，会使用forwardAnim动画，tab[1]到tab[2]，会使用backAnim动画
             tabsDisable: false, //值为true时，tabs间的转场没有动画
             disable: false, //禁用转场动画
-            shadow: true //为false，转场时没有阴影层次效果
+            shadow: true, //为false，转场时没有阴影层次效果
+            nuxt: false
         }
     }
 
 }
-module.exports = transition
+export default transition

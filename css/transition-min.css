@@ -1478,10 +1478,11 @@
     z-index: -1;
     top: 0;
     width: 100%;
-    height:inherit;
+    min-height: 100vh;
     overflow: hidden;
     background: #f8f8f8;
 }
+
 
 /*兼容ios*/
 

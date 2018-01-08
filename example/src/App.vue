@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <!-- <keep-alive> -->
-        <router-view></router-view>
+        <router-view v-transition></router-view>
         <!-- </keep-alive> -->
     </div>
 </template>
