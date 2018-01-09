@@ -171,7 +171,7 @@ transition.install = (Vue, router, options = {}) => {
 
         //禁用转场动画配置
         if (op.disable)
-            transitionType = ''
+            return transitionType = ''
 
         if (op.shadow)
             el.style.boxShadow = '0 3px 10px rgba(0, 0, 0, .156863), 0 3px 10px rgba(0, 0, 0, .227451)'
