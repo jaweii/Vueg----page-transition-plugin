@@ -74,7 +74,9 @@ transition.install = (Vue, router, options = {}) => {
         transition: op.nuxt ? {
             mode: null,
             css: false,
-            leave(el, done) {}
+            leave(el, done) {
+                setTimeout(done, op.firstEntryDuration * 1000);
+            }
         } : null
     })
 
@@ -260,6 +262,7 @@ transition.install = (Vue, router, options = {}) => {
                 if (vuegBac) {
                     vuegBac.innerHTML = ''
                 }
+                console.log(op.nuxt, lastComponent)
                 if (op.nuxt && lastComponent) {
                     vuegBac = lastComponent.$el
                     vuegBac && vuegBac.parentElement.removeChild(vuegBac)
@@ -307,4 +310,5 @@ transition.install = (Vue, router, options = {}) => {
     }
 
 }
+
 export default transition
