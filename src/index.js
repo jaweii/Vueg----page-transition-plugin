@@ -26,10 +26,10 @@ transition.install = (Vue, router, options = {}) => {
         })
         let isInArr = false
         arr.map(item => {
-                if (item === 'animated')
-                    isInArr = true
-            })
-            //我想屎。。。
+            if (item === 'animated')
+                isInArr = true
+        })
+        //我想屎。。。
         if (!isInArr) //已经添加动画了不再添加
             return
 
@@ -40,7 +40,7 @@ transition.install = (Vue, router, options = {}) => {
 
         //每次重新挂载vue都会清空被挂载元素，所有每次都要再添加进去
         let vuegBac = document.getElementById('vueg-background')
-            //不存在就插入
+        //不存在就插入
         if (!vuegBac) {
             document.body.appendChild(bacgrEle)
             vuegBac = bacgrEle
@@ -109,14 +109,14 @@ transition.install = (Vue, router, options = {}) => {
             transitionType = 'first'
 
         //关闭首次进入渐进动画
-        if (op.firstEntryDisable)
+        if (op.firstEntryDisable && transitionType === 'first')
             transitionType = ''
 
         //tabs转场控制
         if (from.name && to.name) {
             let fromIndex = op.tabs.findIndex(item => {
-                    return item.name === from.name
-                }),
+                return item.name === from.name
+            }),
                 toIndex = op.tabs.findIndex(item => {
                     return item.name === to.name
                 })
@@ -233,8 +233,8 @@ transition.install = (Vue, router, options = {}) => {
                                 from {
                                     opacity:0.5;
                                     transform: scale3d(0, 0, 0);
-                                    left:${-centerPoint.x+coord.x}px;
-                                    top:${-centerPoint.y+coord.y}px;
+                                    left:${-centerPoint.x + coord.x}px;
+                                    top:${-centerPoint.y + coord.y}px;
                                 }
                                 to{ 
                                     opacity:1;
@@ -253,27 +253,26 @@ transition.install = (Vue, router, options = {}) => {
 
         //动画完成后移除class
         setTimeout(() => {
-                el.classList.remove(op.forwardAnim)
-                el.classList.remove(op.backAnim)
-                el.style.animationDuration = '0s'
-                el.style.boxShadow = null
+            el.classList.remove(op.forwardAnim)
+            el.classList.remove(op.backAnim)
+            el.style.animationDuration = '0s'
+            el.style.boxShadow = null
 
-                let vuegBac = document.getElementById('vueg-background')
-                if (vuegBac) {
-                    vuegBac.innerHTML = ''
-                }
-                console.log(op.nuxt, lastComponent)
-                if (op.nuxt && lastComponent) {
-                    vuegBac = lastComponent.$el
-                    vuegBac && vuegBac.parentElement.removeChild(vuegBac)
-                }
+            let vuegBac = document.getElementById('vueg-background')
+            if (vuegBac) {
+                vuegBac.innerHTML = ''
+            }
+            if (op.nuxt && lastComponent) {
+                vuegBac = lastComponent.$el
+                vuegBac && vuegBac.parentElement.removeChild(vuegBac)
+            }
 
-                if (coordAnim.findIndex(item => item === anim) !== -1)
-                    style.innerHTML = ''
-            }, op.duration * 1000 + 300) //加300毫秒延迟 因为有时动画还没完成就被移除了
+            if (coordAnim.findIndex(item => item === anim) !== -1)
+                style.innerHTML = ''
+        }, op.duration * 1000 + 300) //加300毫秒延迟 因为有时动画还没完成就被移除了
         setTimeout(() => {
             el.classList.remove('fadeIn')
-        }, op.firstEntryDuration * 1000);
+        }, op.firstEntryDuration * 1000)
     }
 
     document.addEventListener('mousedown', getCoord)
