@@ -1,50 +1,26 @@
 {
-    "name": "vueg",
-    "version": "1.3.4",
-    "description": "为vue-router添加转场效果，只需要在<router-view v-transition></router-view>加上v-transition，即可获得转场效果，并能够根据url级别(/)和历史记录判断是前进和后退。",
-    "main": "index.js",
-    "dependencies": {},
-    "devDependencies": {
-        "autoprefixer": "^7.1.1",
-        "babel-cli": "^6.26.0",
-        "babel-preset-es2015": "^6.24.1",
-        "chalk": "^1.1.3",
-        "clone": "^2.1.1",
-        "css-loader": "^0.28.4",
-        "del": "^3.0.0",
-        "gulp": "^3.9.1",
-        "gulp-autoprefixer": "^4.0.0",
-        "gulp-babel": "^6.1.2",
-        "gulp-clean-css": "^3.4.1",
-        "gulp-concat": "^2.6.1",
-        "gulp-concat-css": "^2.3.0",
-        "gulp-rename": "^1.2.2",
-        "gulp-uglify": "^3.0.0",
-        "postcss-loader": "^2.0.5",
-        "pump": "^1.0.2",
-        "style-loader": "^0.18.2",
-        "webpack": "^2.6.1"
-    },
-    "directories": {},
-    "dist": {
-        "shasum": "8041cf235ac6f07b66c5a37bc372012708a4696e",
-        "tarball": "https://registry.npmjs.org/vueg/-/vueg-1.1.6.tgz"
-    },
-    "gitHead": "0eae7a5f9528ef69e942d5e7a409ab2364d9af13",
-    "keywords": [
-        "vue",
-        "transition"
-    ],
-    "license": "ISC",
-    "maintainers": [
-        {
-            "email": "10005945485@qq.com",
-            "name": "jawei"
-        }
-    ],
-    "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    }
+  "name": "vueg",
+  "version": "1.4.0",
+  "description": "[Vue] 页面级的转场动画插件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaweii/vueg.git"
+  },
+  "keywords": [
+    "vue",
+    "transition"
+  ],
+  "author": "jawei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaweii/vueg/issues"
+  },
+  "homepage": "https://github.com/jaweii/vueg#readme",
+  "dependencies": {
+    "animate.css": "^3.7.0"
+  }
 }

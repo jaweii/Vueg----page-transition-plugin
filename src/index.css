@@ -1,0 +1,33 @@
+#vueg-background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #f8f8f8;
+}
+
+.fit-to-screen {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/*兼容ios*/
+
+a,
+button,
+ul {
+  animation: hue 60s infinite linear;
+  -webkit-animation: hue 60s infinite linear;
+}
+
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(-1deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(0deg);
+  }
+}
