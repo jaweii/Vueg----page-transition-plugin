@@ -4,13 +4,11 @@
 
 为Vue应用添加页面间的转场特效。
 
----
 
 ## 效果：
 
 [![](https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif "演示动态图")](https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif)
 
----
 
 ## 使用方法  
 
