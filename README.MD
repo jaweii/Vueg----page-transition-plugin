@@ -15,7 +15,7 @@
 #### 安装
 
 ```js
-npm i vueg -G
+npm i vueg --save
 ```
 
 #### 引入插件

@@ -19,7 +19,7 @@ import './index.css'
  *  'user-login':{
  *    enter: ['user-register'],
  *    leave: ['index'],
- *    disable: ['user-login-sms]
+ *    disable: ['user-login-sms']
  *  }
  * }
  * `
