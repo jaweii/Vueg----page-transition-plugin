@@ -1,18 +1,13 @@
 [![](https://raw.githubusercontent.com/jaweii/vueg/master/image/vueg.JPG "LOGO")](https://raw.githubusercontent.com/jaweii/vueg/master/image/vueg.JPG)
 
-# VUEG
-
-为Vue应用添加页面间的转场特效。
-
-
-## 效果：
+## Example：
 
 [![](https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif "演示动态图")](https://raw.githubusercontent.com/jaweii/vueg/master/image/GIF.gif)
 
 
-## 使用方法  
+## 使用方法
 
-#### 安装
+#### 安装插件
 
 ```js
 npm i vueg --save
