@@ -20,10 +20,10 @@ import vueg from 'vueg'
 Vue.use(vueg, new Router(), Options) // 传入实例化后的router，和插件的全局配置
 
 ```
-### 插件指令
+#### 插件指令
 插件注册了名为`v-transition`的指令，接收一个Options参数，其包含的配置优先级高于全局配置。
 
-### 启用插件：
+#### 启用插件：
 
 为`router-view`添加`v-transition`指令后，该`router-view`下所有的页面都将启用动画：
 ```js
