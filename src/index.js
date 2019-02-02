@@ -83,28 +83,26 @@ const plugin = {
       /** @type {Element['classList']} */
       const classList = el.classList
 
-      const bacgrEle = document.createElement('div')
-      bacgrEle.id = 'vueg-background'
-
       //每次重新挂载vue都会清空被挂载元素，所有每次都要再添加进去
-      let vuegBac = document.getElementById('vueg-background')
+      let bg = document.getElementById('vueg-background')
       //不存在就插入
-      if (!vuegBac) {
-        document.body.appendChild(bacgrEle)
-        vuegBac = bacgrEle
+      if (!bg) {
+        const bgElement = document.createElement('div')
+        bgElement.id = 'vueg-background'
+        document.body.appendChild(bgElement)
+        bg = bgElement
       }
 
-      vuegBac.innerHTML = ''
-      vuegBac.classList = []
-      vuegBac.appendChild(el)
+      bg.innerHTML = ''
+      bg.classList = []
+      bg.appendChild(el)
 
       // 恢复之前的滚动条位置
-      vuegBac.scrollLeft = scrollPosition.x
-      vuegBac.scrollTop = scrollPosition.y
+      bg.scrollLeft = scrollPosition.x
+      bg.scrollTop = scrollPosition.y
     }
     Vue.directive('transition', {
       inserted(el, binding, vnode, oldVnode) {
-        const interval = Date.now() - touchEndTime
         instanceConfig = binding.value
         addEffect(vnode.context, el, binding.value || {})
       }
@@ -128,8 +126,8 @@ const plugin = {
 
     router.beforeEach((to, from, next) => {
       route = to
-      let toDepth = to.path.split('/').length
-      let fromDepth = from.path.split('/').length
+      let toDepth = to.path.split('/').filter(v=>!!v).length
+      let fromDepth = from.path.split('/').filter(v=>!!v).length
 
       transitionType = toDepth > fromDepth ? 'forward' : 'back'
       //深度相同
@@ -305,10 +303,10 @@ const plugin = {
         el.style.animationDuration = '0s'
         el.style.boxShadow = null
 
-        const vuegBac = document.getElementById('vueg-background')
+        const bg = document.getElementById('vueg-background')
         // 移除背景
-        if (vuegBac) {
-          vuegBac.innerHTML = ''
+        if (bg) {
+          bg.innerHTML = ''
         }
 
         if (coordAnim.includes(anim)) {
