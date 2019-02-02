@@ -1,6 +1,6 @@
 {
   "name": "vueg",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "[Vue] 页面级的转场动画插件",
   "main": "index.js",
   "scripts": {
