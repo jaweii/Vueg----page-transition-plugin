@@ -2,7 +2,7 @@
 
 ## Example：
 
-[![](https://raw.githubusercontent.com/jaweii/Vueg----page-transition-plugin/master/image/GIF.gif "演示动态图")](https://raw.githubusercontent.com/jaweii/Vueg----page-transition-plugin/master/image/GIF.gif)
+<img src="https://raw.githubusercontent.com/jaweii/Vueg----page-transition-plugin/master/image/GIF.gif" height="600"/>
 
 
 ## 使用方法
