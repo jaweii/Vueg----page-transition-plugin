@@ -103,8 +103,9 @@ const plugin = {
     }
     Vue.directive('transition', {
       inserted(el, binding, vnode, oldVnode) {
+        lastInstanceConfig = instanceConfig
         instanceConfig = binding.value
-        addEffect(vnode.context, el, binding.value || {})
+        addEffect(vnode.context, el, instanceConfig)
       }
     })
     Vue.mixin({
@@ -126,8 +127,8 @@ const plugin = {
 
     router.beforeEach((to, from, next) => {
       route = to
-      let toDepth = to.path.split('/').filter(v=>!!v).length
-      let fromDepth = from.path.split('/').filter(v=>!!v).length
+      let toDepth = to.path.split('/').filter(v => !!v).length
+      let fromDepth = from.path.split('/').filter(v => !!v).length
 
       transitionType = toDepth > fromDepth ? 'forward' : 'back'
       //深度相同
@@ -150,11 +151,11 @@ const plugin = {
 
       // 处理map选项
       const enter = Object.keys(op.map).find(key => op.map[key].enter && op.map[key].enter.includes(from.name))
-      if (enter === to.name) {
+      if (enter && enter === to.name) {
         transitionType = 'back'
       }
       const leave = Object.keys(op.map).find(key => op.map[key].leave && op.map[key].leave.includes(to.name))
-      if (leave === from.name) {
+      if (leave && leave === from.name) {
         transitionType = 'back'
       }
       if (Object.keys(op.map).includes(from.name)) {
@@ -208,7 +209,7 @@ const plugin = {
       Object.assign(op, options)
 
       //组件vueg配置覆盖全局配置
-      if (instanceConfig) Object.assign(op, lastInstanceConfig, instanceConfig)
+      Object.assign(op, lastInstanceConfig, instanceConfig)
 
       if (op.shadow) {
         el.style.boxShadow = '0 3px 10px rgba(0, 0, 0, .156863), 0 3px 10px rgba(0, 0, 0, .227451)'
@@ -255,27 +256,18 @@ const plugin = {
       if (coordAnim.includes(anim)) {
         switch (anim) {
           case 'touchPoint':
-            let centerPoint = {
-              x: document.documentElement.clientWidth / 2,
-              y: document.documentElement.clientHeight / 2
-            }
             cssText = `.touchPoint{
-                                max-height:${document.documentElement.clientHeight}px!important;
-                                overflow:hidden!important;
-                                animation-name:touchPoint!important;
-                                position: relative!important;
-                                animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1)!important;
+                                max-height:${document.documentElement.clientHeight}px;
+                                overflow:hidden;
+                                animation-name:touchPoint;
+                                position: relative;
                             }
                             @keyframes touchPoint {
-                                from {
-                                    transform: scale3d(0, 0, 0);
-                                    left:${ coord.x - centerPoint.x}px;
-                                    top:${  coord.y - centerPoint.y}px;
+                                0% {
+                                    -webkit-clip-path: circle(0% at ${coord.x}px ${coord.y}px);
                                 }
-                                to{ 
-                                    transform: scale3d(1, 1, 1);
-                                    left:0;
-                                    top:0;
+                                100% {
+                                    -webkit-clip-path: circle(120% at ${coord.x}px ${coord.y}px);
                                 }
                             }`
             const textNode = document.createTextNode(cssText)
@@ -320,8 +312,8 @@ const plugin = {
 
       }, op.duration * 1000)
 
-      lastInstanceConfig = {}
-      Object.assign(lastInstanceConfig, op)
+      // lastInstanceConfig = {}
+      // Object.assign(lastInstanceConfig, op)
     }
 
     document.addEventListener('mousedown', getCoord)
