@@ -103,8 +103,14 @@ const plugin = {
     }
     Vue.directive('transition', {
       inserted(el, binding, vnode, oldVnode) {
-        lastInstanceConfig = instanceConfig
-        instanceConfig = binding.value
+        const value = binding.value || {}
+        if (vnode.data.routerView) {
+          lastInstanceConfig = instanceConfig || {}
+          instanceConfig = Object.assign(value || {}, lastInstanceConfig)
+        } else {
+          lastInstanceConfig = instanceConfig || {}
+          instanceConfig = value || {}
+        }
         addEffect(vnode.context, el, instanceConfig)
       }
     })
@@ -209,7 +215,8 @@ const plugin = {
       Object.assign(op, options)
 
       //组件vueg配置覆盖全局配置
-      Object.assign(op, lastInstanceConfig, instanceConfig)
+      Object.assign(op, instanceConfig)
+
 
       if (op.shadow) {
         el.style.boxShadow = '0 3px 10px rgba(0, 0, 0, .156863), 0 3px 10px rgba(0, 0, 0, .227451)'
