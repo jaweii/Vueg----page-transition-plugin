@@ -185,7 +185,7 @@ const plugin = {
       const interval = Date.now() - touchEndTime
       const isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
       const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-      if (interval > 30 && iOS && isSafari) {
+      if (interval > 40 && iOS && isSafari) {
         transitionType = null
       }
 
