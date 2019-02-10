@@ -157,14 +157,12 @@ const plugin = {
 
       // 处理map选项
       const enter = Object.keys(op.map).find(key => op.map[key].enter && op.map[key].enter.includes(from.name))
+      const leave = Object.keys(op.map).find(key => op.map[key].leave && op.map[key].leave.includes(to.name))
       if (enter && enter === to.name) {
         transitionType = 'back'
-      }
-      const leave = Object.keys(op.map).find(key => op.map[key].leave && op.map[key].leave.includes(to.name))
-      if (leave && leave === from.name) {
+      } else if (leave && leave === from.name) {
         transitionType = 'back'
-      }
-      if (Object.keys(op.map).includes(from.name)) {
+      } else if (Object.keys(op.map).includes(from.name)) {
         if (op.map[from.name]['enter'] && op.map[from.name]['enter'].includes(to.name)) {
           transitionType = 'forward'
         }
@@ -172,6 +170,16 @@ const plugin = {
           transitionType = 'back'
         }
         if (op.map[from.name]['disable'] && op.map[from.name]['disable'].includes(to.name)) {
+          transitionType = null
+        }
+      } else if (Object.keys(op.map).includes(to.name)) {
+        if (op.map[to.name]['leave'] && op.map[to.name]['leave'].includes(from.name)) {
+          transitionType = 'forward'
+        }
+        if (op.map[to.name]['enter'] && op.map[to.name]['enter'].includes(from.name)) {
+          transitionType = 'back'
+        }
+        if (op.map[to.name]['disable'] && op.map[to.name]['disable'].includes(from.name)) {
           transitionType = null
         }
       }
