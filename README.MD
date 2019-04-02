@@ -1,7 +1,8 @@
-<a href="https://github.com/996icu/996.ICU/blob/master/LICENSE">
-    <img alt="996icu" src="https://img.shields.io/badge/license-NPL%20(The%20996%20Prohibited%20License)-blue.svg">
-</a>  
-
+<p style="align:center;">
+    <a href="https://github.com/996icu/996.ICU/blob/master/LICENSE">
+        <img alt="996icu" src="https://img.shields.io/badge/license-NPL%20(The%20996%20Prohibited%20License)-blue.svg">
+    </a>
+</p>
 <br>
 
 
@@ -78,8 +79,3 @@ map: {
 `enter`、`leave` 参数使用的animate.css的动画类名作为值，查看全部可用值，请访问：[https://daneden.github.io/animate.css](https://daneden.github.io/animate.css)。
 另外插件自带了一个可用值 `touchPoint`，动画效果为页面从触摸(点击)点放大入场。
 
-## 其他
-为了方便使用者查看、修改源代码、提交PR，本插件直接导出包，未经webpack构建；而源码中使用了ES6语法，所以你的项目需要支持ES6语法(比如Array.includes)。 
-
-## 协议
-ISC
