@@ -26,11 +26,11 @@ npm i vueg --save
 ```js
 import vueg from 'vueg'
 
-Vue.use(vueg, new Router(), Options) // 传入实例化后的router，和插件的全局配置
+Vue.use(vueg, new Router(), Options) // 传入实例化后的router, Options为可选的插件配置
 
 ```
 #### 插件指令
-插件注册了名为`v-transition`的指令，接收一个Options参数，其包含的配置优先级高于全局配置。
+插件注册了名为`v-transition`的指令，接收一个可选的Options参数，其包含的配置优先级高于全局配置。
 
 #### 启用插件：
 
@@ -59,7 +59,7 @@ Vue.use(vueg, new Router(), Options) // 传入实例化后的router，和插件�
 @property {string} leave 离场动画，默认为'fadeInLeft'
 @property {boolean} disableAtSameDepths 深度相同时禁用动画(通过url中的反斜杠数量/判断)。默认为false
 @property {boolean} shadow 是否为入场页面添加阴影。默认为true
-@property {Object} map 有时候通过url判断的转场类型可能并不是你想要的，这时你可以使用map选项。
+@property {Object} map 默认情况下vueg根据url深度判断是入场还是离场，但有时可能并不是你想要的效果，这时你可以使用map选项。
 指定路由A到路由A/B/C的转场类型是enter还是leave，覆盖通过url深度判断的转场类型。
 下面例子表示，从名为`user-login`的路由到名为`user-regiseter`的路由转场，使用入场动画，顺序反转则使用离场动画。
 从名为`user-login`的路由到名为`index`的路由转场，使用离场动画，顺序反转则使用入场动画。
