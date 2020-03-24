@@ -143,22 +143,15 @@ const plugin = {
       }
       //深度相同
       if (toDepth === fromDepth) {
-        //if (lastPath === to.path && toDepth < fromDepth) {
-        //  transitionType = 'back'
-        //} else {
-        //  transitionType = 'forward'
-        //}
-
         //队列中无记录则为前进,有则为返回,且清除返回之前的路由记录
-        var index=pathArr.indexOf(to.path);
+        var index=pathArr.indexOf(to.path)
         if(index!=-1){
           transitionType = 'back'
-          pathArr.splice(index+1,pathArr.length-index);
+          pathArr.splice(index+1,pathArr.length-index)
         }else{
-          pathArr.push(to.path);
+          pathArr.push(to.path)
           transitionType = 'forward'
         }
-		  
         //深度相同时禁用动画
         if (op.disableAtSameDepths)
           transitionType = null
@@ -169,7 +162,6 @@ const plugin = {
       if (to.path === from.path && to.path === lastPath)
         transitionType = 'first'
 		
-console.log(pathArr);
       // 处理map选项
       const enter = Object.keys(op.map).find(key => op.map[key].enter && op.map[key].enter.includes(from.name))
       const leave = Object.keys(op.map).find(key => op.map[key].leave && op.map[key].leave.includes(to.name))
