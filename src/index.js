@@ -130,18 +130,26 @@ const plugin = {
         }
       } : null
     })
-
+	var pathArr=[];//用于存放路由跳转记录
     router.beforeEach((to, from, next) => {
       route = to
       let toDepth = to.path.split('/').filter(v => !!v).length
       let fromDepth = from.path.split('/').filter(v => !!v).length
-
+	
       transitionType = toDepth > fromDepth ? 'forward' : 'back'
+      //第一次进入首页,记录首页路由
+      if(from.path=='/'){
+        pathArr.push(to.path);
+      }
       //深度相同
       if (toDepth === fromDepth) {
-        if (lastPath === to.path && toDepth < fromDepth) {
+        //队列中无记录则为前进,有则为返回,且清除返回之前的路由记录
+        var index=pathArr.indexOf(to.path)
+        if(index!=-1){
           transitionType = 'back'
-        } else {
+          pathArr.splice(index+1,pathArr.length-index)
+        }else{
+          pathArr.push(to.path)
           transitionType = 'forward'
         }
         //深度相同时禁用动画
@@ -150,11 +158,10 @@ const plugin = {
 
         lastPath = from.path
       }
-
       //首次进入无效果
       if (to.path === from.path && to.path === lastPath)
         transitionType = 'first'
-
+		
       // 处理map选项
       const enter = Object.keys(op.map).find(key => op.map[key].enter && op.map[key].enter.includes(from.name))
       const leave = Object.keys(op.map).find(key => op.map[key].leave && op.map[key].leave.includes(to.name))
